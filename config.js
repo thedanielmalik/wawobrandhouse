@@ -1,0 +1,1 @@
+window.WAWO_CONFIG={whatsapp:'234YOURNUMBER',beholdFeedId:'',instagramUrl:'https://instagram.com/wawobrandhouse'};
