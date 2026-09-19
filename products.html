@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WAWO Brand House — Product Gallery</title>
+<script src="config.js"></script>
+<meta name="description" content="Explore packaging, nylon, bags, pouches, labels, apparel, totes, corporate gifts, cards, print and mailers from Wawo Brand House.">
+<style>
+:root{--red:#e21f26;--ink:#0b0b0b;--paper:#fbfaf8;--cream:#f1ebe4;--line:#ddd4ca;--muted:#756e67;--white:#fff;--serif:Georgia,'Times New Roman',serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}a{text-decoration:none;color:inherit}img{display:block;width:100%}button{font:inherit;cursor:pointer}.container{width:min(1240px,92vw);margin:auto}
+.header{position:sticky;top:0;z-index:30;background:rgba(251,250,248,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.07)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{width:142px}.navlinks{display:flex;gap:22px;font-size:12px;align-items:center}.navlinks a:hover{color:var(--red)}.btn{border:1px solid var(--ink);border-radius:999px;padding:11px 17px;font-size:11px;font-weight:850;background:#fff}.btn.red{background:var(--red);border-color:var(--red);color:#fff}.hero{background:var(--cream);padding:64px 0 44px;border-bottom:1px solid var(--line)}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:850;color:var(--red)}.hero h1{font-family:var(--serif);font-size:clamp(50px,7vw,86px);font-weight:400;line-height:.9;letter-spacing:-.05em;margin:11px 0 16px;max-width:900px}.hero p{max-width:680px;color:#5e574f;font-size:15px;margin:0}.hero-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.chips{display:flex;gap:8px;overflow:auto;padding:20px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}.chip.active{border-color:var(--red);color:var(--red)}
+.gallery-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:54px 0 24px}.gallery-head h2{font-size:clamp(34px,4vw,54px);letter-spacing:-.05em;margin:6px 0 0}.gallery-head p{max-width:470px;color:var(--muted);font-size:13px;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}.card-media{aspect-ratio:1.08/1;background:#ece5dd;overflow:hidden}.card-media img{width:100%;height:100%;object-fit:cover;object-position:center}.card-body{padding:15px 16px 17px}.card-body small{color:var(--red);font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:9px}.card-body h3{font-size:19px;margin:6px 0 4px;letter-spacing:-.03em}.card-body p{font-size:11px;color:var(--muted);margin:0 0 12px}.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);padding:7px 9px;border-radius:999px;font-size:8px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.note{margin:12px 0 0;color:#8a827a;font-size:10px}.empty{padding:50px 18px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}
+.cta{margin:62px 0 70px;background:var(--red);color:#fff;border-radius:22px;padding:42px}.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6vw,72px);line-height:.92;margin:8px 0 12px}.cta p{max-width:560px;color:#ffe2df;font-size:13px}.cta .btn{margin-top:10px;background:#fff;border-color:#fff}
+footer{background:var(--ink);color:#fff;padding:38px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot small{color:#a49d96;font-size:10px}
+@media(max-width:900px){.navlinks{display:none}.gallery{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.hero{padding:46px 0 28px}.gallery{grid-template-columns:1fr}.gallery-head{display:block}.gallery-head p{margin-top:10px}.cta{padding:32px 24px}.logo{width:130px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="container nav"><a href="index.html"><img class="logo" src="logo.svg" alt="WAWO Brand House"></a><nav class="navlinks"><a href="index.html#products">Products</a><a href="index.html#work">Our Work</a><a href="index.html#instagram">Instagram</a><a href="index.html#corporate">Corporate</a><a href="index.html#seasonal">Seasonal</a></nav><a class="btn red" href="index.html#quote">Request a Quote →</a></div></header>
+
+<section class="hero"><div class="container"><div class="eyebrow">Product catalogue</div><h1>Choose the look.<br>We’ll build the brand.</h1><p>Browse visual examples by product type. These are style references for layout, material and finish; Wawo’s actual production portfolio will replace the reference imagery as the library is supplied.</p><div class="hero-row"><a class="btn red" href="index.html#quote">Build My Brand Pack →</a><a class="btn" href="index.html#products">Back to Products</a></div></div></section>
+
+<main class="container">
+<div class="chips" id="chips"></div>
+<div class="gallery-head"><div><div class="eyebrow" id="eyebrow">Explore</div><h2 id="title">Boxes & Packaging</h2></div><p id="intro">Rigid boxes, folding cartons and premium packaging formats for products, retail, food, beauty and gifting.</p></div>
+<div class="gallery" id="gallery"></div>
+<div class="cta"><div class="eyebrow" style="color:#ffd4d2">MAKE IT YOURS</div><h2>Like what you see?</h2><p>Tell us the product, quantity and look you want. We’ll recommend the right material, print and finish for your project.</p><a class="btn" href="index.html#quote">Request a Quote →</a></div>
+</main>
+
+<footer><div class="container foot"><small>© 2026 Wawo Brand House</small><small>Packaging · Nylon · Print · Merchandise · Gifting</small></div></footer>
+
+<script>
+const categories={
+boxes:{label:'Boxes & Packaging',intro:'Rigid boxes, folding cartons and premium packaging formats for products, retail, food, beauty and gifting.',items:[
+['https://unsplash.com/photos/x9FPFvXWzdw/download?force=true','KAI','Luxury rigid box concept','Reference style'],
+['https://unsplash.com/photos/bYhDEWgqYLM/download?force=true','NOMA','Mailer box concept','Reference style'],
+['https://unsplash.com/photos/gthSas4oYC0/download?force=true','AURELIA','Premium presentation box','Reference style'],
+['https://thelegacyprinting.co.uk/wp-content/uploads/magnetic-gift-boxes-uk.webp','VYBE','Magnetic closure box','Reference style']
+]},
+nylon:{label:'Nylon Packages',intro:'Branded carrier bags and printed nylon formats for retail, fashion, food, events and everyday customer handover.',items:[
+['https://pzielng.com/assets/products/branded-plastic-nylon-gift-shopping-packaging-delivery-bag-design-and-printing-in-lagos-abuja-nigeria.webp','RIZUS','Printed nylon carrier','Reference style'],
+['https://s.alicdn.com/%40sc04/kf/H9380a38f17fd453ab3098c87874247e9z/Custom-Packaging-Printed-Poly-Mailers-Courier-Polybag-Plastic-Polly-Mailing-Bag-Polymailers-Envelope-Shipping-Bag-with-Logo.png','BLUSH','Printed poly package','Reference style'],
+['https://i.etsystatic.com/25351669/r/il/e190a1/3797440911/il_794xN.3797440911_3ylp.jpg','NURU','Boutique poly mailer','Reference style'],
+['https://quikprint.ng/img/v1/VOsZMe2HrGrx121KgB-zqtF22pDpFU5PoJeTm3j9cCU/pr%3Apdp/plain/local%3A///2026/07/29/b7d92ec7-4898-4c92-9b0f-15e609243e3e.png%40webp','CRAVE','Custom nylon carrier','Reference style']
+]},
+'bags-pouches':{label:'Bags & Pouches',intro:'Paper shopping bags, zipper pouches and stand-up pouches in clean, retail-ready presentation styles.',items:[
+['https://img.uline.com/is/image/uline/cp_hotstampbags?hei=750&op_usm=1%2C1%2C1&qlt=75&wid=750','FABLE','Branded paper bags','Reference style'],
+['https://www.betterjoinpackaging.com/Uploads/pro/Custom-Jewelry-Pouch-Packaging-Bag-Biodegradable-PVC-Clear-Mini-Zipper-Pouch-Jewelry.307.3-2.jpg','SKINVL','Frosted zipper pouch','Reference style'],
+['https://image.made-in-china.com/202f0j00HwKWRIezsfYT/Sac-d-emballage-alimentaire-en-plastique-sans-danger-pour-les-aliments-pour-les-chips-de-pomme-de-terre-et-les-bonbons.webp','TERRA','Stand-up pouch','Reference style'],
+['https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&fm=jpg&q=90&w=1800','LUMÉ','Clean paper-bag look','Reference style']
+]},
+labels:{label:'Labels & Stickers',intro:'Roll labels, seals, product stickers and packaging labels for beauty, food, retail and consumer products.',items:[
+['https://d3pyarv4eotqu4.cloudfront.net/oztakkpri/images/product/White-BOPP-Roll-Labels_03124805202502.jpg','TERRA','Roll labels','Reference style'],
+['https://unsplash.com/photos/rxv8P843Bco/download?force=true','NOMA','Sticker sheet concept','Reference style'],
+['https://unsplash.com/photos/MEsWk-dZzlI/download?force=true','LUMÉ','Product-label system','Reference style'],
+['https://unsplash.com/photos/CeQiQxNNdUM/download?force=true','NURU','Premium label system','Reference style']
+]},
+apparel:{label:'Apparel & Merch',intro:'T-shirts, polos, hoodies and branded apparel presented as product-ready merchandise.',items:[
+['https://unsplash.com/photos/Wr0TpKqf26s/download?force=true','VYBE','Single tee presentation','Reference style'],
+['https://unsplash.com/photos/tWOz2_EK5EQ/download?force=true','NEXA','Colour range','Reference style'],
+['https://unsplash.com/photos/acn5ERAeSb4/download?force=true','ALTURA','Garment mockup','Reference style'],
+['https://images.unsplash.com/photo-1636954935833-80bdb8d2fcb2?auto=format&fit=crop&fm=jpg&q=90&w=1800','IDEAS','Branded statement tee','Reference style']
+]},
+totes:{label:'Totes',intro:'Canvas and lifestyle tote bags for retail, events, activations, gifting and everyday brand visibility.',items:[
+['https://unsplash.com/photos/smTDI-z1rlY/download?force=true','FABLE','Branded canvas tote','Reference style'],
+['https://mms-images.out.customink.com/mms/images/catalog/dee2af7e111a2bb21c3b25dbb232f9a9/colors/181100/views/alt/front_large.png?autoNegate=1&design=nmp0-00cg-4gv0&digest=000000028&ixbg=%23f5f5f5&ixfm=jpeg&ixq=60&ixw=722&placeMax=1&placeMaxPct=0.8&placeUseProduct=1&placeUseView=front','NOMA','Minimal tote','Reference style'],
+['https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&fm=jpg&q=90&w=1800','AURELIA','Lifestyle tote','Reference style'],
+['https://images.unsplash.com/photo-1657364890921-dbd85cf0398b?auto=format&fit=crop&fm=jpg&q=90&w=1800','BLUSH','Retail bag styling','Reference style']
+]},
+corporate:{label:'Corporate Gifts',intro:'Gift boxes and practical branded sets for staff, customers, executives, events and festive campaigns.',items:[
+['https://tlxprime.com/cdn/shop/files/Premium3in1Comb0GiftSetnotebookpenbottletlx-set-305.jpg?v=1740130716&width=1946','ALTURA','Notebook + bottle set','Reference style'],
+['https://www.giftoo.in/cdn/shop/files/CoroporateNameEdits3_34_80bde936-d3a6-43e3-9bae-897fdbcd5d74.png?v=1767085225&width=1946','NEXA','Executive gift set','Reference style'],
+['https://ik.imagekit.io/j83rchiauw/seo_popular_master/202311271746_DNgJcUbT3Vasdqix.jpg','KAI','Corporate essentials box','Reference style'],
+['https://unsplash.com/photos/_qN6tmGjmtg/download?force=true','NURU','Premium gift styling','Reference style']
+]},
+'cards-print':{label:'Cards & Print',intro:'Business cards, thank-you cards, stationery, flyers and other printed touchpoints that complete a brand system.',items:[
+['https://graficapritt.com.br/blog-assets/visual_identity.png','NOMA','Stationery suite','Reference style'],
+['https://images.squarespace-cdn.com/content/v1/5c81d361ab1a6260d3230723/1581198062343-28BTK1EDL5GN7LOF6BR5/flat-lay-branding-example.jpg','LUMÉ','Thank-you card set','Reference style'],
+['https://unsplash.com/photos/qlNNYxkKoDc/download?force=true','VYBE','Premium card stock','Reference style'],
+['https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?auto=format&fit=crop&fm=jpg&q=90&w=1800','FABLE','Print collateral','Reference style']
+]},
+mailers:{label:'Mailers',intro:'E-commerce and protective mailers in branded, clean and retail-ready formats.',items:[
+['https://unsplash.com/photos/W-CN4ZWwKiY/download?force=true','NURU','Printed poly mailer','Reference style'],
+['https://unsplash.com/photos/ASIou6p8sho/download?force=true','PAWFUL','Illustrated mailer','Reference style'],
+['https://i.etsystatic.com/25351669/r/il/e190a1/3797440911/il_794xN.3797440911_3ylp.jpg','BLUSH','Boutique mailer','Reference style'],
+['https://s.alicdn.com/%40sc04/kf/H9380a38f17fd453ab3098c87874247e9z/Custom-Packaging-Printed-Poly-Mailers-Courier-Polybag-Plastic-Polly-Mailing-Bag-Polymailers-Envelope-Shipping-Bag-with-Logo.png','CRAVE','Courier mailer','Reference style']
+]}
+};
+
+const chips=document.getElementById('chips'),gallery=document.getElementById('gallery'),title=document.getElementById('title'),intro=document.getElementById('intro'),eyebrow=document.getElementById('eyebrow');
+Object.entries(categories).forEach(([slug,c])=>{const a=document.createElement('a');a.className='chip';a.href='#'+slug;a.textContent=c.label;a.dataset.slug=slug;a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#'+slug);render(slug);});chips.appendChild(a);});
+function render(slug){const c=categories[slug]||categories.boxes;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;gallery.innerHTML='';c.items.forEach(([src,brand,desc,tag])=>{const card=document.createElement('article');card.className='card';card.innerHTML='<div class="tag">'+tag+'</div><div class="card-media"><img loading="lazy" decoding="async" src="'+src+'" alt="'+brand+' '+desc+'"></div><div class="card-body"><small>Sample brand concept</small><h3>'+brand+'</h3><p>'+desc+'. Send us your logo, colours and specifications and we can build a Wawo version.</p><a class="btn red" href="index.html#quote">Request this style →</a></div>';gallery.appendChild(card);});window.scrollTo({top:document.querySelector('.gallery-head').offsetTop-95,behavior:'smooth'});}
+let slug=location.hash.replace('#','')||'boxes';if(!categories[slug])slug='boxes';render(slug);
+</script>
+</body>
+</html>
