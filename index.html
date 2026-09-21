@@ -115,11 +115,8 @@ function initBehold(){
     const s=document.createElement('script');
     s.type='module';
     s.src='https://w.behold.so/widget.js';
-    s.onload=()=>setTimeout(()=>{ if(!widget.shadowRoot && !widget.children.length && fallback) fallback.classList.add('open'); },8000);
     s.onerror=()=>{ if(fallback)fallback.classList.add('open'); };
     document.head.appendChild(s);
-  }else if(fallback){
-    setTimeout(()=>{ if(!widget.shadowRoot && !widget.children.length) fallback.classList.add('open'); },8000);
   }
 }
 initBehold();
