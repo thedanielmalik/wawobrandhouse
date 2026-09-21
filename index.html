@@ -116,8 +116,5 @@ let igReady=false;
 if(ig && 'IntersectionObserver' in window){new IntersectionObserver(es=>{if(es[0].isIntersecting&&!igReady){igReady=true;initBehold()}},{rootMargin:'500px'}).observe(ig)}else if(ig){initBehold()}
 document.getElementById('menuBtn').addEventListener('click',()=>{const n=document.querySelector('.nav-links');const open=n.dataset.open==='1';n.dataset.open=open?'0':'1';n.style.display=open?'none':'flex';n.style.position='absolute';n.style.top='68px';n.style.left='0';n.style.right='0';n.style.padding='18px 6vw';n.style.background='rgba(251,250,248,.98)';n.style.flexDirection='column';n.style.gap='12px'; n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.dataset.open='0';n.style.display='none'}));});
 </script>
-<script>
-(function(){const imgs=document.querySelectorAll('img[data-wawo-b64]');imgs.forEach(async img=>{try{const r=await fetch(img.dataset.wawoB64||img.getAttribute('data-wawo-b64'));if(!r.ok)throw new Error('Wawo asset not found');const t=await r.text();img.src='data:image/jpeg;base64,'+t.trim();}catch(e){console.warn('Wawo image load failed',e);}});})();
-</script>
 </body>
 </html>
