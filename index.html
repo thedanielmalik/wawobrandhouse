@@ -91,7 +91,7 @@ footer{background:#0b0b0b;color:#fff;padding:44px 0}.footer-grid{display:grid;gr
 <div class="field full"><label>Additional notes</label><textarea name="additionalNotes" placeholder="Anything else you want our team to know?"></textarea><div style="font-size:11px;color:#736d66;margin-top:4px">No pricing is shown here. We’ll review your request and provide a suitable quote.</div></div>
 </div><div class="form-actions"><button type="button" class="btn" id="cancelModal">Cancel</button><button class="btn btn-red" type="submit">Send Request →</button></div></form></div></div>
 <script>
-const CONFIG=window.WAWO_CONFIG||{whatsapp:'',whatsappLink:''};
+const CONFIG=window.WAWO_CONFIG||{whatsappNumber:'',whatsappLink:''};
 const modal=document.getElementById('quoteModal');
 const selected=new Set();
 function openQuote(product=''){resetQuote();modal.classList.add('open');document.body.classList.add('no-scroll');if(product){const p=product.toLowerCase();const aliases=[['nylon',['nylon','mailer']],['boxes',['box','packaging']],['paper bags',['bag','pouch','tote']],['labels & stickers',['label','sticker']],['apparel & merch',['apparel','merch','t-shirt','polo','cap']],['corporate gifts',['corporate','gift']],['cards & print',['card','print','stationery']],['other',['other']]];const match=aliases.find(x=>x[1].some(k=>p.includes(k)));if(match){document.querySelectorAll('.choice').forEach(b=>{if(b.textContent.trim().toLowerCase()===match[0]){b.classList.add('active');selected.add(b.textContent.trim())}})}}}
@@ -109,32 +109,34 @@ document.getElementById('closeModal').addEventListener('click',closeQuote);docum
 if(location.hash==='#quote')setTimeout(()=>openQuote(),60);
 document.getElementById('quoteForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const industry=f.get('industry')==='Other'?(f.get('otherIndustry')||'Other'):f.get('industry');const chosen=[...selected];const message=[
 'WAWO BRAND HOUSE',
-'NEW QUOTE REQUEST',
+'NEW QUOTE ENQUIRY',
 '',
+'━━━━━━━━━━━━━━━━━━━━',
 'CUSTOMER INFORMATION',
-'--------------------------------',
+'━━━━━━━━━━━━━━━━━━━━',
 `Business Name: ${f.get('business')||'Not provided'}`,
 `Customer Name: ${f.get('name')||'Not provided'}`,
 `Industry: ${industry||'Not provided'}`,
 '',
+'━━━━━━━━━━━━━━━━━━━━',
 'PROJECT REQUIREMENTS',
-'--------------------------------',
+'━━━━━━━━━━━━━━━━━━━━',
 `Products Needed: ${chosen.join(', ')||'Not specified'}`,
 `Quantity: ${f.get('quantity')||'Not specified'}`,
 `Required Timeline: ${f.get('timeline')||'Not specified'}`,
 '',
+'━━━━━━━━━━━━━━━━━━━━',
 'ORDER / PROJECT DETAILS',
-'--------------------------------',
+'━━━━━━━━━━━━━━━━━━━━',
 `${f.get('notes')||'Not provided'}`,
 '',
+'━━━━━━━━━━━━━━━━━━━━',
 'ADDITIONAL NOTES',
-'--------------------------------',
+'━━━━━━━━━━━━━━━━━━━━',
 `${f.get('additionalNotes')||'None'}`,
 '',
-'NEXT STEP',
 'Please review this enquiry and provide the appropriate quote and production recommendations.'
-].join('\n');const phone=String(CONFIG.whatsapp||'').replace(/\D/g,'');const link=phone?`https://wa.me/${phone}?text=${encodeURIComponent(message)}`:String(CONFIG.whatsappLink||'').trim();if(!link){alert('Wawo WhatsApp is not configured yet. Add the WhatsApp number or link in config.js before launch.');return}window.open(link,'_blank')});
-function initBehold(){const feedId=String(CONFIG.beholdFeedId||'').trim(),widget=document.querySelector('#igLive behold-widget'),fallback=document.getElementById('igFallback');if(!widget)return;if(!feedId){widget.remove();if(fallback)fallback.classList.add('open');return}widget.setAttribute('feed-id',feedId);if(window.customElements&&!customElements.get('behold-widget')){const s=document.createElement('script');s.type='module';s.src='https://w.behold.so/widget.js';s.onerror=()=>{if(fallback)fallback.classList.add('open')};document.head.appendChild(s)}}
+].join('\\n');const phone=String(CONFIG.whatsappNumber||'').replace(/\\D/g,'');const link=phone?`https://wa.me/${phone}?text=${encodeURIComponent(message)}`:String(CONFIG.whatsappLink||'').trim();if(!link){alert('Wawo WhatsApp is not configured yet. Add the WhatsApp number or link in config.js before launch.');return}window.open(link,'_blank')});function initBehold(){const feedId=String(CONFIG.beholdFeedId||'').trim(),widget=document.querySelector('#igLive behold-widget'),fallback=document.getElementById('igFallback');if(!widget)return;if(!feedId){widget.remove();if(fallback)fallback.classList.add('open');return}widget.setAttribute('feed-id',feedId);if(window.customElements&&!customElements.get('behold-widget')){const s=document.createElement('script');s.type='module';s.src='https://w.behold.so/widget.js';s.onerror=()=>{if(fallback)fallback.classList.add('open')};document.head.appendChild(s)}}
 initBehold();const igFallbackBtn=document.getElementById('igFallbackBtn');if(igFallbackBtn)igFallbackBtn.addEventListener('click',()=>window.open(CONFIG.instagramUrl,'_blank'));
 const menuBtn=document.getElementById('menuBtn');if(menuBtn)menuBtn.addEventListener('click',()=>{const n=document.querySelector('.nav-links');const open=n.dataset.open==='1';n.dataset.open=open?'0':'1';n.style.display=open?'none':'flex';n.style.position='absolute';n.style.top='68px';n.style.left='0';n.style.right='0';n.style.padding='18px 6vw';n.style.background='rgba(251,250,248,.98)';n.style.flexDirection='column';n.style.gap='12px';n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.dataset.open='0';n.style.display='none'}))});
 </script>
