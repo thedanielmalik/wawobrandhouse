@@ -1,1 +1,1 @@
-window.WAWO_CONFIG={whatsapp:'2348108305661',beholdFeedId:'wawobrandhouse',instagramUrl:'https://instagram.com/wawobrandhouse'};
+window.WAWO_CONFIG={whatsapp:'2348108305661',beholdFeedId:'goJWkYdHXYkDlP1wBNOd',instagramUrl:'https://instagram.com/wawobrandhouse'};
