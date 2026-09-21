@@ -86,12 +86,11 @@ mailers:{label:'Mailers',intro:'Actual Wawo flexible and courier-style packaging
 ]}
 };
 
-async function resolveImage(src){return src;}
 const chips=document.getElementById('chips'),gallery=document.getElementById('gallery'),title=document.getElementById('title'),intro=document.getElementById('intro'),eyebrow=document.getElementById('eyebrow');
 Object.entries(categories).forEach(([slug,c])=>{const a=document.createElement('a');a.className='chip';a.href='#'+slug;a.textContent=c.label;a.dataset.slug=slug;a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#'+slug);render(slug);});chips.appendChild(a);});
-async function render(slug){
+function render(slug){
  const c=categories[slug]||categories.boxes;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;
- gallery.innerHTML='<div class="empty">Loading Wawo production…</div>';
+ gallery.innerHTML='';
  for(const [src,brand,desc,tag,actual=false] of c.items){
    const card=document.createElement('article');card.className='card'+(actual?' actual':'');
    const media=document.createElement('div');media.className='card-media';
@@ -103,7 +102,7 @@ async function render(slug){
    const p=document.createElement('p');p.textContent=actual?'Actual Wawo production photo from the uploaded library. Request this style with your logo, colours and specifications.':desc;
    const a=document.createElement('a');a.className='btn red';a.href='index.html#quote';a.textContent='Request this work →';
    body.append(small,h3,p,a);card.appendChild(body);gallery.appendChild(card);
-   try{img.src=await resolveImage(src);}catch(e){console.warn('Wawo image failed',src,e);}
+   img.src=src;
  }
  window.scrollTo({top:document.querySelector('.gallery-head').offsetTop-95,behavior:'smooth'});
 }
