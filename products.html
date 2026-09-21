@@ -11,7 +11,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}a{text-decoration:none;color:inherit}img{display:block;width:100%}button{font:inherit;cursor:pointer}.container{width:min(1240px,92vw);margin:auto}
 .header{position:sticky;top:0;z-index:30;background:rgba(251,250,248,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.07)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{width:142px}.navlinks{display:flex;gap:22px;font-size:12px;align-items:center}.navlinks a:hover{color:var(--red)}.btn{border:1px solid var(--ink);border-radius:999px;padding:11px 17px;font-size:11px;font-weight:850;background:#fff}.btn.red{background:var(--red);border-color:var(--red);color:#fff}.hero{background:var(--cream);padding:64px 0 44px;border-bottom:1px solid var(--line)}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:850;color:var(--red)}.hero h1{font-family:var(--serif);font-size:clamp(50px,7vw,86px);font-weight:400;line-height:.9;letter-spacing:-.05em;margin:11px 0 16px;max-width:900px}.hero p{max-width:680px;color:#5e574f;font-size:15px;margin:0}.hero-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.chips{display:flex;gap:8px;overflow:auto;padding:20px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800}.chip.active{border-color:var(--red);color:var(--red)}
 .gallery-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:54px 0 24px}.gallery-head h2{font-size:clamp(34px,4vw,54px);letter-spacing:-.05em;margin:6px 0 0}.gallery-head p{max-width:470px;color:var(--muted);font-size:13px;margin:0}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}.card-media{aspect-ratio:1.08/1;background:#ece5dd;overflow:hidden}.card-media img{width:100%;height:100%;object-fit:cover;object-position:center}.card-body{padding:15px 16px 17px}.card-body small{color:var(--red);font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:9px}.card-body h3{font-size:19px;margin:6px 0 4px;letter-spacing:-.03em}.card-body p{font-size:11px;color:var(--muted);margin:0 0 12px}.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);padding:7px 9px;border-radius:999px;font-size:8px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.note{margin:12px 0 0;color:#8a827a;font-size:10px}.empty{padding:50px 18px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}.card-media{aspect-ratio:1.08/1;background:#ece5dd;overflow:hidden}.card-media img{width:100%;height:100%;object-fit:cover;object-position:center}.card-body{padding:15px 16px 17px}.card-body small{color:var(--red);font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:9px}.card-body h3{font-size:19px;margin:6px 0 4px;letter-spacing:-.03em}.card-body p{font-size:11px;color:var(--muted);margin:0 0 12px}.tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);padding:7px 9px;border-radius:999px;font-size:8px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.card.actual{outline:2px solid rgba(226,31,38,.16)}.actual-label{color:var(--red)!important}.note{margin:12px 0 0;color:#8a827a;font-size:10px}.empty{padding:50px 18px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}
 .cta{margin:62px 0 70px;background:var(--red);color:#fff;border-radius:22px;padding:42px}.cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6vw,72px);line-height:.92;margin:8px 0 12px}.cta p{max-width:560px;color:#ffe2df;font-size:13px}.cta .btn{margin-top:10px;background:#fff;border-color:#fff}
 footer{background:var(--ink);color:#fff;padding:38px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot small{color:#a49d96;font-size:10px}
 @media(max-width:900px){.navlinks{display:none}.gallery{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.hero{padding:46px 0 28px}.gallery{grid-template-columns:1fr}.gallery-head{display:block}.gallery-head p{margin-top:10px}.cta{padding:32px 24px}.logo{width:130px}}
@@ -34,18 +34,21 @@ footer{background:var(--ink);color:#fff;padding:38px 0}.foot{display:flex;justif
 <script>
 const categories={
 boxes:{label:'Boxes & Packaging',intro:'Rigid boxes, folding cartons, magnetic boxes and premium presentation packaging.',items:[
+['b64:assets/wawo-work-b64/boxes_actual.b64','Wawo Work','Branded presentation packaging','Packaging',true],
 ['https://images.unsplash.com/photo-1771255217872-99fe6c876e45?auto=format&fit=crop&fm=jpg&q=90&w=2200','KAI','Luxury rigid box','Rigid packaging'],
 ['https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&fm=jpg&q=90&w=2200','NOMA','Product presentation box','Folding box'],
 ['https://thelegacyprinting.co.uk/wp-content/uploads/magnetic-gift-boxes-uk.webp','AURELIA','Magnetic gift box','Magnetic closure'],
 ['https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&fm=jpg&q=90&w=2200','CRAVE','Retail packaging style','Retail box']
 ]},
 nylon:{label:'Nylon Packages',intro:'Printed nylon carrier bags and retail poly packaging for fashion, food, beauty, events and everyday customer handover.',items:[
+['b64:assets/wawo-work-b64/nylon_actual.b64','Wawo Work','Branded nylon package','Printed nylon',true],
 ['https://pzielng.com/assets/products/branded-plastic-nylon-gift-shopping-packaging-delivery-bag-design-and-printing-in-lagos-abuja-nigeria.webp','RIZUS','Printed nylon carrier','Retail nylon'],
 ['https://quikprint.ng/img/v1/VOsZMe2HrGrx121KgB-zqtF22pDpFU5PoJeTm3j9cCU/pr%3Apdp/plain/local%3A///2026/07/29/b7d92ec7-4898-4c92-9b0f-15e609243e3e.png%40webp','BLUSH','Custom printed nylon','Retail nylon'],
 ['https://images.unsplash.com/photo-1706881811932-da4389051b8f?auto=format&fit=crop&fm=jpg&q=90&w=2200','NURU','Branded flexible pack','Flexible packaging'],
 ['https://s.alicdn.com/%40sc04/kf/H9380a38f17fd453ab3098c87874247e9z/Custom-Packaging-Printed-Poly-Mailers-Courier-Polybag-Plastic-Polly-Mailing-Bag-Polymailers-Envelope-Shipping-Bag-with-Logo.png','CRAVE','Printed poly package','Poly packaging']
 ]},
 'bags-totes-pouches':{label:'Bags, Totes & Pouches',intro:'One gallery for paper shopping bags, canvas totes, zipper pouches and stand-up pouches.',items:[
+['b64:assets/wawo-work-b64/bags_actual.b64','Wawo Work','Branded shopping bag','Shopping bag',true],
 ['https://img.uline.com/is/image/uline/cp_hotstampbags?hei=1200&op_usm=1%2C1%2C1&qlt=85&wid=1200','FABLE','Luxury paper shopping bag','Paper bag'],
 ['https://images.unsplash.com/photo-1786123411073-1512993c39ae?auto=format&fit=crop&fm=jpg&q=90&w=2200','NOMA','Printed canvas totes','Tote bag'],
 ['https://www.betterjoinpackaging.com/Uploads/pro/Custom-Jewelry-Pouch-Packaging-Bag-Biodegradable-PVC-Clear-Mini-Zipper-Pouch-Jewelry.307.3-2.jpg','LUMÉ','Frosted zipper pouch','Pouch'],
@@ -60,6 +63,7 @@ labels:{label:'Labels & Stickers',intro:'Product labels, roll stickers, seals, t
 ['https://images.unsplash.com/photo-1772479918263-6a140e376026?auto=format&fit=crop&fm=jpg&q=90&w=2200','NURU','Packaging seal concept','Seals']
 ]},
 apparel:{label:'Apparel & Merch',intro:'T-shirts, polos, hoodies, caps, uniforms and branded merchandise for teams, campaigns and customers.',items:[
+['b64:assets/wawo-work-b64/apparel_actual.b64','Wawo Work','Branded T-shirt','Apparel',true],
 ['https://images.unsplash.com/photo-1636954935833-80bdb8d2fcb2?auto=format&fit=crop&fm=jpg&q=90&w=2200','VYBE','Branded T-shirt','T-shirt'],
 ['https://images.unsplash.com/photo-1653634223765-3efdf256de70?auto=format&fit=crop&fm=jpg&q=90&w=2200','NEXA','Apparel colourway','T-shirt'],
 ['https://unsplash.com/photos/B7_VsO5Wsm8/download?force=true','ALTURA','Custom tee production','T-shirt'],
@@ -67,18 +71,21 @@ apparel:{label:'Apparel & Merch',intro:'T-shirts, polos, hoodies, caps, uniforms
 ['https://unsplash.com/photos/kppt9yM8z0U/download?force=true','VYBE','Retail apparel display','Apparel']
 ]},
 corporate:{label:'Corporate Gifts',intro:'Branded gift sets for staff, customers, executives, conferences, launches and festive campaigns.',items:[
+['b64:assets/wawo-work-b64/corporate_actual.b64','Wawo Work','Corporate gift presentation','Gift set',true],
 ['https://tlxprime.com/cdn/shop/files/Premium3in1Comb0GiftSetnotebookpenbottletlx-set-305.jpg?v=1740130716&width=1946','ALTURA','Notebook, pen & bottle set','Gift set'],
 ['https://www.giftoo.in/cdn/shop/files/CoroporateNameEdits3_34_80bde936-d3a6-43e3-9bae-897fdbcd5d74.png?v=1767085225&width=1946','NEXA','Executive gift set','Gift set'],
 ['https://ik.imagekit.io/j83rchiauw/seo_popular_master/202311271746_DNgJcUbT3Vasdqix.jpg','KAI','Corporate essentials box','Gift box'],
 ['https://unsplash.com/photos/_qN6tmGjmtg/download?force=true','NURU','Premium gift presentation','Gift presentation']
 ]},
 'cards-print':{label:'Cards & Print',intro:'Menus, flyers, business cards, complimentary cards, brochures, stationery and other printed brand touchpoints.',items:[
+['b64:assets/wawo-work-b64/print_actual.b64','Wawo Work','Printed brand collateral','Cards & print',true],
 ['https://unsplash.com/photos/chyT9XPAdcg/download?force=true','NOMA','Complimentary business cards','Business cards'],
 ['https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?auto=format&fit=crop&fm=jpg&q=90&w=2200','LUMÉ','Stationery set','Stationery'],
 ['https://images.unsplash.com/photo-1772479918263-6a140e376026?auto=format&fit=crop&fm=jpg&q=90&w=2200','VYBE','Menu and flyer concept','Menus & flyers'],
 ['https://unsplash.com/photos/RJyqB0RWZ7Q/download?force=true','FABLE','Printed collateral flat lay','Print collateral']
 ]},
 mailers:{label:'Mailers',intro:'E-commerce mailers, padded mailers, protective packaging and printed courier bags.',items:[
+['b64:assets/wawo-work-b64/mailers_actual.b64','Wawo Work','Branded mailer packaging','E-commerce',true],
 ['https://s.alicdn.com/%40sc04/kf/H9380a38f17fd453ab3098c87874247e9z/Custom-Packaging-Printed-Poly-Mailers-Courier-Polybag-Plastic-Polly-Mailing-Bag-Polymailers-Envelope-Shipping-Bag-with-Logo.png','CRAVE','Printed poly mailer','E-commerce'],
 ['https://i.etsystatic.com/25351669/r/il/e190a1/3797440911/il_794xN.3797440911_3ylp.jpg','BLUSH','Boutique protective mailer','E-commerce'],
 ['https://unsplash.com/photos/W-CN4ZWwKiY/download?force=true','NURU','Branded mailer concept','Mailer'],
@@ -86,9 +93,34 @@ mailers:{label:'Mailers',intro:'E-commerce mailers, padded mailers, protective p
 ]}
 };
 
+const b64Cache={};
+async function resolveImage(src){
+ if(!src.startsWith('b64:')) return src;
+ const path=src.slice(4);
+ if(!b64Cache[path]) b64Cache[path]=fetch(path).then(r=>{if(!r.ok)throw new Error('Image asset not found: '+path);return r.text();}).then(t=>'data:image/jpeg;base64,'+t.trim());
+ return b64Cache[path];
+}
 const chips=document.getElementById('chips'),gallery=document.getElementById('gallery'),title=document.getElementById('title'),intro=document.getElementById('intro'),eyebrow=document.getElementById('eyebrow');
 Object.entries(categories).forEach(([slug,c])=>{const a=document.createElement('a');a.className='chip';a.href='#'+slug;a.textContent=c.label;a.dataset.slug=slug;a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#'+slug);render(slug);});chips.appendChild(a);});
-function render(slug){const c=categories[slug]||categories.boxes;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;gallery.innerHTML='';c.items.forEach(([src,brand,desc,tag])=>{const card=document.createElement('article');card.className='card';card.innerHTML='<div class="tag">'+tag+'</div><div class="card-media"><img loading="lazy" decoding="async" src="'+src+'" alt="'+brand+' '+desc+'"></div><div class="card-body"><small>Sample brand concept</small><h3>'+brand+'</h3><p>'+desc+'. Send us your logo, colours and specifications and we can build a Wawo version.</p><a class="btn red" href="index.html#quote">Request this style →</a></div>';gallery.appendChild(card);});window.scrollTo({top:document.querySelector('.gallery-head').offsetTop-95,behavior:'smooth'});}
+async function render(slug){
+ const c=categories[slug]||categories.boxes;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;
+ gallery.innerHTML='<div class="empty">Loading Wawo work…</div>';
+ gallery.innerHTML='';
+ for(const [src,brand,desc,tag,actual=false] of c.items){
+   const card=document.createElement('article');card.className='card'+(actual?' actual':'');
+   const media=document.createElement('div');media.className='card-media';
+   const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.alt=(actual?'Wawo production work: ':brand+' ')+desc;media.appendChild(img);
+   const pill=document.createElement('div');pill.className='tag';pill.textContent=tag;card.appendChild(pill);card.appendChild(media);
+   const body=document.createElement('div');body.className='card-body';
+   const small=document.createElement('small');small.className=actual?'actual-label':'';small.textContent=actual?'Wawo production':'Sample brand concept';
+   const h3=document.createElement('h3');h3.textContent=actual?desc:brand;
+   const p=document.createElement('p');p.textContent=actual?'Actual Wawo production reference from our uploaded work library. Request this style with your logo, colours and specifications.':desc+'. Send us your logo, colours and specifications and we can build a Wawo version.';
+   const a=document.createElement('a');a.className='btn red';a.href='index.html#quote';a.textContent=actual?'Request this work →':'Request this style →';
+   body.append(small,h3,p,a);card.appendChild(body);gallery.appendChild(card);
+   try{img.src=await resolveImage(src);}catch(e){img.src=src;console.warn(e);}
+ }
+ window.scrollTo({top:document.querySelector('.gallery-head').offsetTop-95,behavior:'smooth'});
+}
 let slug=location.hash.replace('#','')||'boxes';if(!categories[slug])slug='boxes';render(slug);
 </script>
 </body>
