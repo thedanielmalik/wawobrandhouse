@@ -33,12 +33,12 @@ footer{background:var(--ink);color:#fff;padding:38px 0}.foot{display:flex;justif
 
 <script>
 const categories={
-boxes:{label:'Boxes & Packaging',intro:'Actual Wawo packaging work: presentation boxes, printed product boxes and premium rigid packaging.',items:[
+'paper-bags-boxes':{label:'Paper Bags and Boxes',intro:'Actual Wawo packaging work: presentation boxes, printed product boxes and premium rigid packaging.',items:[
 ['assets/wawo-work/boxes-01.jpg','Wawo Work','Luxury branded presentation packaging','Packaging',true],
 ['assets/wawo-work/boxes-02.jpg','Wawo Work','Printed product packaging box','Product box',true],
 ['assets/wawo-work/boxes-03.jpg','Wawo Work','Green luxury rigid box packaging','Rigid box',true]
 ]},
-nylon:{label:'Nylon Packages',intro:'Actual Wawo nylon and flexible packaging work for beauty, fashion, retail and customer handover.',items:[
+'nylon-bags':{label:'Nylon Bags and More',intro:'Actual Wawo nylon and flexible packaging work for beauty, fashion, retail and customer handover.',items:[
 ['assets/wawo-work/nylon-01.jpg','Wawo Work','BodyShop.ng branded nylon pouch','Printed nylon',true],
 ['assets/wawo-work/nylon-02.jpg','Wawo Work','Elane branded nylon pouches','Printed nylon',true],
 ['assets/wawo-work/nylon-03.jpg','Wawo Work','Bella-style branded retail pouches','Printed nylon',true],
@@ -49,7 +49,7 @@ nylon:{label:'Nylon Packages',intro:'Actual Wawo nylon and flexible packaging wo
 ['assets/wawo-work/nylon-08.jpg','Wawo Work','Magmimi Bags branded pouch','Printed nylon',true],
 ['assets/wawo-work/nylon-09.jpg','Wawo Work','Branded retail pouch packaging','Printed nylon',true]
 ]},
-'bags-totes-pouches':{label:'Bags, Totes & Pouches',intro:'Actual Wawo work across branded shopping bags, retail bags and lifestyle packaging.',items:[
+'paper-bags-pouches':{label:'Paper Bags and Pouches',intro:'Actual Wawo work across branded shopping bags, retail bags and lifestyle packaging.',items:[
 ['assets/wawo-work/bags-01.jpg','Wawo Work','VOC branded shopping bag','Shopping bag',true],
 ['assets/wawo-work/bags-02.jpg','Wawo Work','Garry’s Hair branded shopping bag','Shopping bag',true],
 ['assets/wawo-work/bags-03.jpg','Wawo Work','Branded white shopping bags','Shopping bag',true],
@@ -70,26 +70,18 @@ corporate:{label:'Corporate Gifts',intro:'Actual Wawo presentation work for prem
 ['assets/wawo-work/corporate-01.jpg','Wawo Work','Wawo Hub branded production display','Corporate presentation',true],
 ['assets/wawo-work/corporate-02.jpg','Wawo Work','Premium black and gold gift presentation','Gift presentation',true]
 ]},
-'cards-print':{label:'Cards & Print',intro:'Actual Wawo printed collateral, promotional cards, inserts and business cards.',items:[
+'cards-paper-prints':{label:'Cards and Paper Prints',intro:'Actual Wawo printed collateral, promotional cards, inserts and business cards.',items:[
 ['assets/wawo-work/cards-print-01.jpg','Wawo Work','Printed promotional collateral','Print collateral',true],
 ['assets/wawo-work/cards-print-02.jpg','Wawo Work','Printed promotional cards','Promotional print',true],
 ['assets/wawo-work/cards-print-03.jpg','Wawo Work','Printed packaging inserts and cards','Print collateral',true],
 ['assets/wawo-work/cards-print-04.jpg','Wawo Work','Branded business card','Business cards',true]
-]},
-mailers:{label:'Mailers',intro:'Actual Wawo flexible and courier-style packaging work for delivery, retail and e-commerce.',items:[
-['assets/wawo-work/mailers-01.jpg','Wawo Work','Printed pouch and mailer package','Mailer',true],
-['assets/wawo-work/mailers-02.jpg','Wawo Work','Good Taste printed mailer','Mailer',true],
-['assets/wawo-work/mailers-03.jpg','Wawo Work','Blush Grace printed pouch','Mailer',true],
-['assets/wawo-work/mailers-04.jpg','Wawo Work','Purple branded mailer pouch','Mailer',true],
-['assets/wawo-work/mailers-05.jpg','Wawo Work','Printed protective mailer','Mailer',true],
-['assets/wawo-work/mailers-06.jpg','Wawo Work','Wawo Hub branded mailer display','Mailer',true]
 ]}
 };
 
 const chips=document.getElementById('chips'),gallery=document.getElementById('gallery'),title=document.getElementById('title'),intro=document.getElementById('intro'),eyebrow=document.getElementById('eyebrow');
 Object.entries(categories).forEach(([slug,c])=>{const a=document.createElement('a');a.className='chip';a.href='#'+slug;a.textContent=c.label;a.dataset.slug=slug;a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'','#'+slug);render(slug);});chips.appendChild(a);});
 function render(slug){
- const c=categories[slug]||categories.boxes;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;
+ const c=categories[slug]||categories['paper-bags-boxes'];document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.slug===slug));title.textContent=c.label;intro.textContent=c.intro;eyebrow.textContent=c.label;
  gallery.innerHTML='';
  for(const [src,brand,desc,tag,actual=false] of c.items){
    const card=document.createElement('article');card.className='card'+(actual?' actual':'');
@@ -106,7 +98,7 @@ function render(slug){
  }
  window.scrollTo({top:document.querySelector('.gallery-head').offsetTop-95,behavior:'smooth'});
 }
-let slug=location.hash.replace('#','')||'boxes';if(!categories[slug])slug='boxes';render(slug);
+let slug=location.hash.replace('#','')||'paper-bags-boxes';if(!categories[slug])slug='paper-bags-boxes';render(slug);
 </script>
 </body>
 </html>
