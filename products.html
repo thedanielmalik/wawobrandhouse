@@ -97,7 +97,7 @@ function render(slug){
    const body=document.createElement('div');body.className='card-body';
    const small=document.createElement('small');small.className=actual?'actual-label':'';small.textContent=actual?'Wawo production':'Sample brand concept';
    const h3=document.createElement('h3');h3.textContent=desc;
-   const p=document.createElement('p');p.textContent=actual?'Actual Wawo production photo from the uploaded library. Request this style with your logo, colours and specifications.':desc;
+   const p=document.createElement('p');p.textContent=actual?'Inspired by this? Let’s build yours.':desc;
    const a=document.createElement('a');a.className='btn red';a.href='index.html#quote';a.textContent='Request this work →';
    body.append(small,h3,p,a);card.appendChild(body);gallery.appendChild(card);
    img.src=src;
