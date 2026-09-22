@@ -1,1 +1,1 @@
-window.WAWO_CONFIG={whatsappNumber:'2349037006129',whatsappLink:'https://wa.me/message/4DWMXRBSPKV2J1',beholdFeedId:'goJWkYdHXYkDlP1wBNOd',instagramUrl:'https://instagram.com/wawobrandhouse'};
+window.WAWO_CONFIG={whatsappNumber:'2349037006129',whatsappLink:'https://wa.me/message/4DWMXRBSPKV2J1',beholdFeedId:'',instagramUrl:'https://instagram.com/wawobrandhouse',siteVersion:'20260922-juicer'};
