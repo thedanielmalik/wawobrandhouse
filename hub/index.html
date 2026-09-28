@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WAWO Hub — Operations</title>
+  <meta name="description" content="WAWO Brand House internal inventory, jobs, revenue and profit operations platform." />
+  <link rel="icon" href="../logo.svg" />
+  <style>
+    :root{
+      --ink:#151515;--muted:#737373;--line:#e9e7e4;--paper:#fbfaf8;--card:#fff;
+      --accent:#c91515;--accent2:#8f0f0f;--good:#157347;--warn:#a56a00;--bad:#b42318;
+      --shadow:0 12px 32px rgba(0,0,0,.06);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--paper)}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+    aside{background:#111;color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh}
+    .brand{display:flex;align-items:center;gap:11px;padding:8px 10px 24px;border-bottom:1px solid #2d2d2d}
+    .brand img{width:42px;height:42px;background:#fff;border-radius:10px;padding:6px}
+    .brand strong{font-size:15px;letter-spacing:.06em}
+    .brand span{display:block;color:#9d9d9d;font-size:11px;margin-top:2px}
+    nav{padding-top:16px;display:grid;gap:5px}
+    nav button{width:100%;text-align:left;border:0;background:transparent;color:#bdbdbd;padding:11px 12px;border-radius:11px;display:flex;gap:10px;align-items:center}
+    nav button:hover,nav button.active{background:#222;color:#fff}
+    nav button.active{box-shadow:inset 3px 0 0 var(--accent)}
+    main{min-width:0}
+    header{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}
+    .header-title{font-weight:800;font-size:18px}.header-sub{color:var(--muted);font-size:12px}
+    .header-actions{display:flex;gap:10px;align-items:center}
+    .pill{padding:8px 12px;background:#f4f3f1;border-radius:999px;font-size:12px}
+    .btn{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:11px;font-weight:700}
+    .btn:hover{background:#f6f5f3}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:var(--accent2)}
+    .content{padding:26px 28px 44px;max-width:1500px}
+    .view{display:none}.view.active{display:block}
+    .eyebrow{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    h1{margin:5px 0 8px;font-size:30px;letter-spacing:-.03em}.lead{color:var(--muted);margin:0}
+    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:22px 0}
+    .toolbar .spacer{flex:1}
+    .select,.input,.textarea{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;outline:none}
+    .input:focus,.select:focus,.textarea:focus{border-color:#c8c1bc;box-shadow:0 0 0 3px rgba(201,21,21,.08)}
+    .grid{display:grid;gap:16px}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .kpi{padding:18px}.kpi .label{font-size:12px;color:var(--muted)}.kpi .value{font-size:26px;font-weight:850;margin-top:8px}.kpi .meta{font-size:11px;color:var(--muted);margin-top:5px}
+    .panel{padding:20px}.panel h3{margin:0 0 4px;font-size:15px}.panel .sub{font-size:12px;color:var(--muted);margin-bottom:15px}
+    .chart{height:250px;display:flex;align-items:end;gap:7px;padding-top:14px}.bar{flex:1;background:#d7d5d1;border-radius:8px 8px 3px 3px;min-width:10px;position:relative}.bar:hover{background:#b9b5af}.bar span{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted)}
+    .table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 13px;border-bottom:1px solid var(--line);font-size:12px;text-align:left;white-space:nowrap}.table th{color:var(--muted);font-weight:700;background:#faf9f7;position:sticky;top:0}.table tr:hover td{background:#fcfbfa}
+    .status{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:800}.status.good{background:#eaf8f0;color:#157347}.status.warn{background:#fff4df;color:#8b5c00}.status.bad{background:#fff0ef;color:#b42318}.status.neutral{background:#f0f0ef;color:#5d5d5a}
+    .money{font-variant-numeric:tabular-nums}
+    .split{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .list{display:grid;gap:10px}.list-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}.list-row:last-child{border-bottom:0}
+    .muted{color:var(--muted)}
+    .empty{padding:40px;text-align:center;color:var(--muted)}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);display:none;align-items:center;justify-content:center;z-index:30;padding:18px}.modal-backdrop.show{display:flex}
+    .modal{background:#fff;border-radius:20px;max-width:720px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 24px 80px rgba(0,0,0,.2)}
+    .modal-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.modal-body{padding:22px}.close{border:0;background:#f1f0ee;width:34px;height:34px;border-radius:50%}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:800;color:#444}
+    .calc{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.calc .card{padding:22px}
+    .calc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .big-total{font-size:38px;font-weight:900;letter-spacing:-.04em}.metric-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .scenario{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.scenario .card{padding:15px}.scenario h4{margin:0 0 8px}
+    .toast{position:fixed;right:20px;bottom:20px;background:#111;color:#fff;padding:12px 14px;border-radius:12px;display:none;z-index:50;font-size:12px}.toast.show{display:block}
+    .mobile-menu{display:none}
+    @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.calc{grid-template-columns:1fr}.app{grid-template-columns:220px 1fr}}
+    @media(max-width:760px){.app{grid-template-columns:1fr}.mobile-menu{display:block}.sidebar-hidden aside{display:none}header{padding:0 16px}.content{padding:20px 16px 36px}.grid-4,.grid-3,.grid-2,.form-grid,.calc-grid,.scenario{grid-template-columns:1fr}.header-sub{display:none}.table th,.table td{padding:10px}.pill{display:none}}
+  </style>
+</head>
+<body>
+<div class="app" id="app">
+  <aside>
+    <div class="brand"><img src="../logo.svg" alt="WAWO"/><div><strong>WAWO HUB</strong><span>Brand House Operations</span></div></div>
+    <nav id="nav"></nav>
+  </aside>
+  <main>
+    <header>
+      <div class="split">
+        <button class="btn mobile-menu" id="mobileMenuBtn">Menu</button>
+        <div><div class="header-title" id="pageTitle">Dashboard</div><div class="header-sub" id="pageSub">Know what the business is doing.</div></div>
+      </div>
+      <div class="header-actions"><span class="pill" id="today"></span><button class="btn primary" id="quickAdd">+ Quick Add</button></div>
+    </header>
+    <div class="content">
+      <section class="view active" id="view-dashboard"></section>
+      <section class="view" id="view-inventory"></section>
+      <section class="view" id="view-products"></section>
+      <section class="view" id="view-clients"></section>
+      <section class="view" id="view-quotes"></section>
+      <section class="view" id="view-orders"></section>
+      <section class="view" id="view-production"></section>
+      <section class="view" id="view-expenses"></section>
+      <section class="view" id="view-calculator"></section>
+      <section class="view" id="view-reports"></section>
+      <section class="view" id="view-settings"></section>
+    </div>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><div class="modal-head"><strong id="modalTitle">Add</strong><button class="close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='wawo_hub_v1';
+const seed={
+ inventory:[
+  {id:1,name:'Premium White Paper 250gsm',sku:'MAT-PAP-001',category:'Paper & Card',unit:'sheets',stock:8200,reorder:2000,cost:185},
+  {id:2,name:'Brown Kraft Paper 200gsm',sku:'MAT-PAP-002',category:'Paper & Card',unit:'sheets',stock:4300,reorder:1200,cost:140},
+  {id:3,name:'White Nylon 18x24',sku:'MAT-NYL-001',category:'Nylon/Polythene',unit:'pcs',stock:640,reorder:300,cost:120},
+  {id:4,name:'Clear Sticker Vinyl A4',sku:'MAT-LBL-001',category:'Labels & Stickers',unit:'sheets',stock:95,reorder:150,cost:850},
+  {id:5,name:'Gift Box Board',sku:'MAT-BOX-001',category:'Packaging',unit:'sheets',stock:560,reorder:200,cost:1300},
+  {id:6,name:'Satin Ribbon 25mm',sku:'MAT-FIN-001',category:'Finishing Materials',unit:'rolls',stock:18,reorder:8,cost:9800},
+  {id:7,name:'16oz White Mug',sku:'MAT-MUG-001',category:'Corporate Gifts',unit:'pcs',stock:82,reorder:30,cost:4200},
+  {id:8,name:'600ml Vacuum Bottle',sku:'MAT-BOT-001',category:'Corporate Gifts',unit:'pcs',stock:46,reorder:20,cost:9500},
+  {id:9,name:'Plain Black Cap',sku:'MAT-APP-001',category:'Apparel',unit:'pcs',stock:33,reorder:20,cost:3500},
+  {id:10,name:'A5 Hardcover Notebook',sku:'MAT-MER-001',category:'Merchandise',unit:'pcs',stock:64,reorder:25,cost:4800}
+ ],
+ products:[
+  {id:1,name:'Custom Paper Bag',category:'Packaging',unit:'pcs',sell:1500,cost:850},
+  {id:2,name:'Luxury Gift Box',category:'Packaging',unit:'pcs',sell:6500,cost:3900},
+  {id:3,name:'Branded Nylon',category:'Nylon/Polythene',unit:'pcs',sell:350,cost:170},
+  {id:4,name:'Sticker / Label',category:'Labels & Stickers',unit:'sheet',sell:1600,cost:900},
+  {id:5,name:'Corporate Gift Set',category:'Corporate Gifts',unit:'set',sell:28000,cost:17500},
+  {id:6,name:'Branded Mug',category:'Corporate Gifts',unit:'pcs',sell:7500,cost:4500},
+  {id:7,name:'Branded Calendar',category:'Event Materials',unit:'pcs',sell:3200,cost:1700},
+  {id:8,name:'Branded T-Shirt',category:'Apparel',unit:'pcs',sell:12000,cost:7600}
+ ],
+ clients:[
+  {id:1,name:'NFEC',contact:'Events Team',phone:'+234 800 000 0001',email:'hello@nfec.example',revenue:1240000,due:180000},
+  {id:2,name:'AuralAuxe',contact:'Procurement',phone:'+234 800 000 0002',email:'orders@aural.example',revenue:760000,due:0},
+  {id:3,name:'Lumari',contact:'Brand Lead',phone:'+234 800 000 0003',email:'brand@lumari.example',revenue:540000,due:90000},
+  {id:4,name:'Zarah Collections',contact:'Operations',phone:'+234 800 000 0004',email:'ops@zarah.example',revenue:390000,due:65000},
+  {id:5,name:'LDMT',contact:'Admin',phone:'+234 800 000 0005',email:'admin@ldmt.example',revenue:680000,due:120000},
+  {id:6,name:'Shoes & Shades',contact:'Founder',phone:'+234 800 000 0006',email:'sales@shades.example',revenue:295000,due:0}
+ ],
+ orders:[
+  {id:1,job:'WB-2026-0087',client:'NFEC',date:'2026-09-25',dueDate:'2026-10-01',status:'In Production',revenue:540000,cost:320000,paid:300000},
+  {id:2,job:'WB-2026-0086',client:'AuralAuxe',date:'2026-09-24',dueDate:'2026-09-30',status:'Quality Check',revenue:280000,cost:170000,paid:280000},
+  {id:3,job:'WB-2026-0085',client:'Lumari',date:'2026-09-22',dueDate:'2026-09-29',status:'Ready',revenue:195000,cost:120000,paid:105000},
+  {id:4,job:'WB-2026-0084',client:'LDMT',date:'2026-09-20',dueDate:'2026-09-28',status:'Delivered / Completed',revenue:420000,cost:250000,paid:420000},
+  {id:5,job:'WB-2026-0083',client:'Zarah Collections',date:'2026-09-17',dueDate:'2026-09-26',status:'Delivered / Completed',revenue:165000,cost:92000,paid:165000},
+  {id:6,job:'WB-2026-0082',client:'Shoes & Shades',date:'2026-09-13',dueDate:'2026-09-24',status:'Delivered / Completed',revenue:130000,cost:76000,paid:130000},
+  {id:7,job:'WB-2026-0081',client:'NFEC',date:'2026-09-11',dueDate:'2026-09-18',status:'Delivered / Completed',revenue:230000,cost:145000,paid:230000},
+  {id:8,job:'WB-2026-0080',client:'AuralAuxe',date:'2026-09-09',dueDate:'2026-09-14',status:'Delivered / Completed',revenue:175000,cost:102000,paid:175000}
+ ],
+ expenses:[
+  {id:1,date:'2026-09-27',category:'Materials',payee:'Paper Supplier',amount:185000,ref:'PO-0091'},
+  {id:2,date:'2026-09-26',category:'Transport/Delivery',payee:'Dispatch Partner',amount:42000,ref:'DEL-221'},
+  {id:3,date:'2026-09-21',category:'Outsourcing',payee:'Finishing Vendor',amount:68000,ref:'OUT-184'},
+  {id:4,date:'2026-09-19',category:'Marketing',payee:'Meta Ads',amount:90000,ref:'ADS-SEP'},
+  {id:5,date:'2026-09-12',category:'Utilities',payee:'Electricity',amount:38000,ref:'UTIL-SEP'}
+ ],
+ quotes:[
+  {id:1,quote:'QT-2026-0031',client:'NFEC',date:'2026-09-27',valid:'2026-10-04',status:'Accepted',total:680000},
+  {id:2,quote:'QT-2026-0030',client:'Lumari',date:'2026-09-25',valid:'2026-10-02',status:'Sent',total:320000},
+  {id:3,quote:'QT-2026-0029',client:'Shoes & Shades',date:'2026-09-24',valid:'2026-10-01',status:'Draft',total:215000}
+ ],
+ payments:[
+  {id:1,date:'2026-09-25',client:'NFEC',amount:200000},
+  {id:2,date:'2026-09-24',client:'AuralAuxe',amount:280000},
+  {id:3,date:'2026-09-22',client:'Lumari',amount:105000},
+  {id:4,date:'2026-09-20',client:'LDMT',amount:420000}
+ ]
+};
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(seed);
+let current='dashboard';
+const money=n=>new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(Number(n)||0);
+const num=n=>Number(n)||0;
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const toast=(m)=>{const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)};
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const statusClass=s=>/completed|ready|paid|accepted/i.test(s)?'good':/production|sent|deposit|quality/i.test(s)?'warn':/cancel|rejected/i.test(s)?'bad':'neutral';
+const today=new Date();document.getElementById('today').textContent=today.toLocaleDateString('en-NG',{day:'2-digit',month:'short',year:'numeric'});
+const navItems=[
+ ['dashboard','Dashboard','▦','Know what the business is doing.'],
+ ['inventory','Inventory','◫','Track materials and stock.'],
+ ['products','Products & Materials','◼','Cost and price library.'],
+ ['clients','Clients','◯','Customers and account history.'],
+ ['quotes','Quotes','▤','Create and manage quotations.'],
+ ['orders','Orders / Jobs','▣','Orders, payments and job profit.'],
+ ['production','Production','↠','Move work through production.'],
+ ['expenses','Expenses','₦','Track business spending.'],
+ ['calculator','Revenue Calculator','∿','Price jobs and model profit.'],
+ ['reports','Reports','▥','Business performance reports.'],
+ ['settings','Settings','⚙','Platform preferences.']
+];
+function renderNav(){document.getElementById('nav').innerHTML=navItems.map(x=>'<button class="'+(x[0]===current?'active':'')+'" onclick="go(\''+x[0]+'\')"><span>'+x[2]+'</span>'+x[1]+'</button>').join('')}
+function go(view){current=view;document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById('view-'+view).classList.add('active');const item=navItems.find(x=>x[0]===view);document.getElementById('pageTitle').textContent=item[1];document.getElementById('pageSub').textContent=item[3];renderNav();renderView();window.scrollTo({top:0,behavior:'smooth'})}
+function kpi(label,value,meta=''){return '<div class="card kpi"><div class="label">'+label+'</div><div class="value money">'+value+'</div><div class="meta">'+meta+'</div></div>'}
+function panel(title,sub,body){return '<div class="card panel"><div><h3>'+title+'</h3><div class="sub">'+sub+'</div></div>'+body+'</div>'}
+function renderDashboard(){
+ const rev=state.orders.reduce((a,o)=>a+num(o.revenue),0), cost=state.orders.reduce((a,o)=>a+num(o.cost),0), due=state.orders.reduce((a,o)=>a+num(o.revenue-o.paid),0);
+ const stockVal=state.inventory.reduce((a,i)=>a+i.stock*i.cost,0), low=state.inventory.filter(i=>i.stock<=i.reorder).length;
+ const active=state.orders.filter(o=>!/completed|cancelled/i.test(o.status)).length, completed=state.orders.filter(o=>/completed/i.test(o.status)).length;
+ const profit=rev-cost, daily=[0.68,0.74,0.42,0.95,0.82,0.58,1.1,1.32,0.86,1.54,1.27,1.48,1.02,1.22,1.63,1.56,1.88,1.7,1.45,1.9,1.74,2.06,1.81,2.2,1.97,2.48,2.25,2.66,2.34,2.72];
+ document.getElementById('view-dashboard').innerHTML=
+  '<div class="eyebrow">WAWO BRAND HOUSE</div><h1>Business at a glance.</h1><p class="lead">Revenue, jobs, stock and profit — all in one place.</p>'+
+  '<div class="grid grid-4" style="margin-top:22px">'+
+  kpi("Today's Revenue",money(175000),'Demo data')+kpi("September Revenue",money(rev),'8 jobs recorded')+kpi('Gross Profit',money(profit),'Before overhead expenses')+kpi('Outstanding Receivables',money(due),'Across active jobs')+
+  kpi('Inventory Value',money(stockVal),'Current stock × unit cost')+kpi('Low Stock Items',String(low),'Need attention')+kpi('Active Jobs',String(active),'In production pipeline')+kpi('Completed Jobs',String(completed),'Delivered this period')+
+  '</div>'+
+  '<div class="grid grid-2" style="margin-top:16px">'+
+  panel('Revenue trend','Current-month daily revenue (demo snapshot)','<div class="chart">'+daily.map((v,i)=>'<div class="bar" style="height:'+Math.round(v/2.8*100)+'%" title="'+money(v*100000)+'"><span>'+(i+1)+'</span></div>').join('')+'</div>')+
+  panel('Low-stock alerts','Materials at or below reorder level','<div class="list">'+state.inventory.filter(i=>i.stock<=i.reorder).map(i=>'<div class="list-row"><div><strong>'+esc(i.name)+'</strong><div class="muted">'+i.stock+' '+i.unit+' left</div></div><span class="status bad">Reorder</span></div>').join('')+'</div>')+
+  '</div>'+
+  '<div class="grid grid-2" style="margin-top:16px">'+
+  panel('Recent jobs','Latest orders and financials','<div class="table-wrap"><table class="table"><thead><tr><th>Job</th><th>Client</th><th>Status</th><th>Revenue</th><th>Profit</th></tr></thead><tbody>'+state.orders.slice(0,6).map(o=>'<tr><td><strong>'+o.job+'</strong></td><td>'+esc(o.client)+'</td><td><span class="status '+statusClass(o.status)+'">'+o.status+'</span></td><td class="money">'+money(o.revenue)+'</td><td class="money">'+money(o.revenue-o.cost)+'</td></tr>').join('')+'</tbody></table></div>')+
+  panel('Top clients','By recorded revenue','<div class="list">'+[...state.clients].sort((a,b)=>b.revenue-a.revenue).slice(0,5).map(c=>'<div class="list-row"><div><strong>'+esc(c.name)+'</strong><div class="muted">'+money(c.due)+' outstanding</div></div><strong class="money">'+money(c.revenue)+'</strong></div>').join('')+'</div>')+
+  '</div>';
+}
+function tableToolbar(placeholder,buttonLabel,action){return '<div class="toolbar"><input class="input" id="searchInput" placeholder="'+placeholder+'" oninput="'+action+'"/><div class="spacer"></div><button class="btn primary" onclick="'+action.replace('filter','openAdd')+'">'+buttonLabel+'</button></div>'}
+function renderInventory(){
+ let rows=state.inventory;
+ document.getElementById('view-inventory').innerHTML='<div class="eyebrow">STOCK CONTROL</div><h1>Inventory</h1><p class="lead">Know what is available, what it is worth and what needs replenishing.</p>'+
+ tableToolbar('Search materials…','+ Add inventory','filterInventory(this.value)')+
+ '<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Item</th><th>SKU</th><th>Category</th><th>Stock</th><th>Reorder</th><th>Unit Cost</th><th>Stock Value</th><th>Status</th><th></th></tr></thead><tbody id="inventoryRows">'+rows.map(invRow).join('')+'</tbody></table></div></div>';
+}
+function invRow(i){const low=i.stock<=i.reorder;return '<tr><td><strong>'+esc(i.name)+'</strong><div class="muted">'+i.unit+'</div></td><td>'+i.sku+'</td><td>'+i.category+'</td><td>'+i.stock+'</td><td>'+i.reorder+'</td><td class="money">'+money(i.cost)+'</td><td class="money">'+money(i.stock*i.cost)+'</td><td><span class="status '+(low?'bad':'good')+'">'+(low?'Low stock':'Healthy')+'</span></td><td><button class="btn" onclick="adjustStock('+i.id+')">Adjust</button></td></tr>'}
+function filterInventory(q){document.getElementById('inventoryRows').innerHTML=state.inventory.filter(i=>(i.name+' '+i.sku+' '+i.category).toLowerCase().includes(q.toLowerCase())).map(invRow).join('')}
+function renderProducts(){
+ document.getElementById('view-products').innerHTML='<div class="eyebrow">PRICING LIBRARY</div><h1>Products & Materials</h1><p class="lead">Finished products, unit economics and reference pricing.</p><div class="toolbar"><div class="spacer"></div><button class="btn primary" onclick="openAdd(\'products\')">+ Add product</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Product</th><th>Category</th><th>Unit</th><th>Cost / Unit</th><th>Selling / Unit</th><th>Profit / Unit</th><th>Margin</th></tr></thead><tbody>'+state.products.map(p=>'<tr><td><strong>'+esc(p.name)+'</strong></td><td>'+p.category+'</td><td>'+p.unit+'</td><td class="money">'+money(p.cost)+'</td><td class="money">'+money(p.sell)+'</td><td class="money">'+money(p.sell-p.cost)+'</td><td>'+(((p.sell-p.cost)/p.sell)*100).toFixed(1)+'%</td></tr>').join('')+'</tbody></table></div></div>';
+}
+function renderClients(){
+ document.getElementById('view-clients').innerHTML='<div class="eyebrow">CUSTOMERS</div><h1>Clients</h1><p class="lead">See who buys, what they buy and what is still outstanding.</p><div class="toolbar"><input class="input" placeholder="Search clients…" oninput="filterClients(this.value)"/><div class="spacer"></div><button class="btn primary" onclick="openAdd(\'clients\')">+ Add client</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Client</th><th>Contact</th><th>Phone</th><th>Total Revenue</th><th>Outstanding</th><th></th></tr></thead><tbody id="clientRows">'+state.clients.map(clientRow).join('')+'</tbody></table></div></div>';
+}
+function clientRow(c){return '<tr><td><strong>'+esc(c.name)+'</strong></td><td>'+esc(c.contact)+'</td><td>'+esc(c.phone)+'</td><td class="money">'+money(c.revenue)+'</td><td class="money">'+money(c.due)+'</td><td><button class="btn" onclick="toast(\'Client details can be expanded next.\')">View</button></td></tr>'}
+function filterClients(q){document.getElementById('clientRows').innerHTML=state.clients.filter(c=>(c.name+' '+c.contact+' '+c.phone).toLowerCase().includes(q.toLowerCase())).map(clientRow).join('')}
+function renderQuotes(){
+ document.getElementById('view-quotes').innerHTML='<div class="eyebrow">SALES PIPELINE</div><h1>Quotes</h1><p class="lead">Create, track and convert quotations into jobs.</p><div class="toolbar"><div class="spacer"></div><button class="btn primary" onclick="openAdd(\'quotes\')">+ New quote</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Quote</th><th>Client</th><th>Date</th><th>Valid Until</th><th>Status</th><th>Total</th></tr></thead><tbody>'+state.quotes.map(q=>'<tr><td><strong>'+q.quote+'</strong></td><td>'+q.client+'</td><td>'+q.date+'</td><td>'+q.valid+'</td><td><span class="status '+statusClass(q.status)+'">'+q.status+'</span></td><td class="money">'+money(q.total)+'</td></tr>').join('')+'</tbody></table></div></div>';
+}
+function renderOrders(){
+ document.getElementById('view-orders').innerHTML='<div class="eyebrow">ORDER MANAGEMENT</div><h1>Orders / Jobs</h1><p class="lead">Every job has a status, financials and payment position.</p><div class="toolbar"><select class="select" onchange="filterOrders(this.value)"><option value="">All statuses</option>'+[...new Set(state.orders.map(o=>o.status))].map(s=>'<option>'+s+'</option>').join('')+'</select><div class="spacer"></div><button class="btn primary" onclick="openAdd(\'orders\')">+ New job</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Job</th><th>Client</th><th>Due</th><th>Status</th><th>Revenue</th><th>Cost</th><th>Profit</th><th>Paid</th><th>Balance</th></tr></thead><tbody id="orderRows">'+state.orders.map(orderRow).join('')+'</tbody></table></div></div>';
+}
+function orderRow(o){return '<tr><td><strong>'+o.job+'</strong></td><td>'+o.client+'</td><td>'+o.dueDate+'</td><td><span class="status '+statusClass(o.status)+'">'+o.status+'</span></td><td class="money">'+money(o.revenue)+'</td><td class="money">'+money(o.cost)+'</td><td class="money">'+money(o.revenue-o.cost)+'</td><td class="money">'+money(o.paid)+'</td><td class="money">'+money(o.revenue-o.paid)+'</td></tr>'}
+function filterOrders(q){document.getElementById('orderRows').innerHTML=state.orders.filter(o=>!q||o.status===q).map(orderRow).join('')}
+function renderProduction(){
+ const cols=['Confirmed','In Production','Quality Check','Ready','Delivered / Completed'];
+ document.getElementById('view-production').innerHTML='<div class="eyebrow">WORKFLOW</div><h1>Production</h1><p class="lead">Move jobs through the floor without losing sight of delivery dates.</p><div class="grid" style="grid-template-columns:repeat(5,minmax(210px,1fr));overflow:auto;padding-bottom:8px">'+cols.map(col=>'<div class="card panel"><div class="split"><strong>'+col+'</strong><span class="status neutral">'+state.orders.filter(o=>o.status===col).length+'</span></div><div class="list">'+state.orders.filter(o=>o.status===col).map(o=>'<div style="background:#faf9f7;border:1px solid var(--line);border-radius:14px;padding:13px"><strong>'+o.job+'</strong><div class="muted" style="margin-top:5px">'+o.client+'</div><div class="money" style="margin-top:8px;font-weight:800">'+money(o.revenue)+'</div><div class="muted" style="margin-top:4px">Due '+o.dueDate+'</div></div>').join('')+'</div></div>').join('')+'</div>';
+}
+function renderExpenses(){
+ const total=state.expenses.reduce((a,e)=>a+e.amount,0);
+ document.getElementById('view-expenses').innerHTML='<div class="eyebrow">OVERHEAD & JOB COSTS</div><h1>Expenses</h1><p class="lead">Track where money leaves the business.</p><div class="grid grid-3">'+kpi('Recorded Expenses',money(total),'Demo period')+kpi('Entries',String(state.expenses.length),'All categories')+kpi('Average Entry',money(total/state.expenses.length),'Across recorded expenses')+'</div><div class="toolbar"><div class="spacer"></div><button class="btn primary" onclick="openAdd(\'expenses\')">+ Add expense</button></div><div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Category</th><th>Payee</th><th>Reference</th><th>Amount</th></tr></thead><tbody>'+state.expenses.map(e=>'<tr><td>'+e.date+'</td><td>'+e.category+'</td><td>'+esc(e.payee)+'</td><td>'+esc(e.ref)+'</td><td class="money">'+money(e.amount)+'</td></tr>').join('')+'</tbody></table></div></div>';
+}
+function renderCalculator(){
+ document.getElementById('view-calculator').innerHTML='<div class="eyebrow">FLAGSHIP TOOL</div><h1>Revenue Calculator</h1><p class="lead">Price a job, understand the margin and work backward from the profit you need.</p><div class="calc" style="margin-top:22px"><div class="card"><div class="calc-grid">'+['quantity','selling','material','printing','labour','finishing','packaging','delivery','other'].map((f,i)=>'<div class="field"><label>'+({quantity:'Quantity',selling:'Selling price / unit',material:'Material cost',printing:'Printing cost',labour:'Labour',finishing:'Finishing',packaging:'Packaging',delivery:'Delivery',other:'Other expense'}[f])+'</label><input class="input" id="calc-'+f+'" type="number" value="'+(f==='quantity'?500:f==='selling'?1500:f==='material'?450:f==='printing'?120:f==='labour'?80:f==='finishing'?60:f==='packaging'?40:f==='delivery'?15000/500:20)+'" oninput="calc()"/></div>').join('')+'</div><div style="margin-top:16px" class="field"><label>Target gross margin % (optional)</label><input class="input" id="calc-target" type="number" value="40" oninput="calc()"/></div><div class="scenario"><div class="card"><h4>Basic</h4><div class="muted">Lower price</div><div class="money" id="basicPrice"></div></div><div class="card"><h4>Standard</h4><div class="muted">Balanced</div><div class="money" id="standardPrice"></div></div><div class="card"><h4>Premium</h4><div class="muted">Higher margin</div><div class="money" id="premiumPrice"></div></div></div></div><div class="card"><div class="eyebrow">LIVE OUTPUT</div><div class="big-total money" id="calcProfit">₦0</div><div class="muted">Gross profit</div><div style="margin-top:18px" id="calcLines"></div></div></div>';
+ calc();
+}
+function calc(){
+ const q=Math.max(0,num(document.getElementById('calc-quantity')?.value)), sell=num(document.getElementById('calc-selling')?.value);
+ const perCosts=['material','printing','labour','finishing','packaging','delivery','other'].reduce((a,f)=>a+num(document.getElementById('calc-'+f)?.value),0);
+ const revenue=q*sell,cost=q*perCosts,profit=revenue-cost,margin=revenue?profit/revenue*100:0,target=num(document.getElementById('calc-target')?.value);
+ const breakEven=perCosts, targetSell=target<100?breakEven/(1-target/100):0, profitPer=q?profit/q:0;
+ const lines=[['Total Revenue',money(revenue)],['Total Job Cost',money(cost)],['Cost / Unit',money(perCosts)],['Profit / Unit',money(profitPer)],['Gross Margin',margin.toFixed(1)+'%'],['Break-even / Unit',money(breakEven)],['Suggested Price @ '+target.toFixed(0)+'%',money(targetSell)]];
+ document.getElementById('calcProfit').textContent=money(profit);document.getElementById('calcLines').innerHTML=lines.map(x=>'<div class="metric-line"><span>'+x[0]+'</span><strong class="money">'+x[1]+'</strong></div>').join('');
+ document.getElementById('basicPrice').textContent=money(targetSell*0.95);document.getElementById('standardPrice').textContent=money(targetSell);document.getElementById('premiumPrice').textContent=money(targetSell*1.1);
+}
+function renderReports(){
+ const revenue=state.orders.reduce((a,o)=>a+o.revenue,0), cost=state.orders.reduce((a,o)=>a+o.cost,0), expenses=state.expenses.reduce((a,e)=>a+e.amount,0);
+ document.getElementById('view-reports').innerHTML='<div class="eyebrow">INSIGHTS</div><h1>Reports</h1><p class="lead">Quick management views from your operational data.</p><div class="grid grid-3">'+kpi('Revenue',money(revenue),'Recorded jobs')+kpi('Gross Profit',money(revenue-cost),'Revenue less production cost')+kpi('Expenses',money(expenses),'Recorded expenses')+'</div><div class="grid grid-2" style="margin-top:16px">'+panel('Product economics','Reference margins from the product library','<div class="table-wrap"><table class="table"><thead><tr><th>Product</th><th>Sell</th><th>Cost</th><th>Margin</th></tr></thead><tbody>'+state.products.map(p=>'<tr><td>'+p.name+'</td><td class="money">'+money(p.sell)+'</td><td class="money">'+money(p.cost)+'</td><td>'+(((p.sell-p.cost)/p.sell)*100).toFixed(1)+'%</td></tr>').join('')+'</tbody></table></div>'),panel('Receivables','Clients with outstanding balances','<div class="list">'+state.clients.filter(c=>c.due>0).sort((a,b)=>b.due-a.due).map(c=>'<div class="list-row"><span>'+esc(c.name)+'</span><strong class="money">'+money(c.due)+'</strong></div>').join('')+'</div>')+'</div><div style="margin-top:16px"><button class="btn" onclick="exportCSV()">Export orders CSV</button></div>';
+}
+function exportCSV(){const header=['Job','Client','Date','Due Date','Status','Revenue','Cost','Profit','Paid','Balance'];const rows=state.orders.map(o=>[o.job,o.client,o.date,o.dueDate,o.status,o.revenue,o.cost,o.revenue-o.cost,o.paid,o.revenue-o.paid]);const csv=[header,...rows].map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wawo-orders.csv';a.click();URL.revokeObjectURL(a.href);toast('CSV exported')}
+function renderSettings(){
+ document.getElementById('view-settings').innerHTML='<div class="eyebrow">CONFIGURATION</div><h1>Settings</h1><p class="lead">Keep WAWO Hub ready for the next stage of the system.</p><div class="grid grid-2"><div class="card panel"><h3>Workspace</h3><div class="sub">Business settings for this local-first MVP.</div><div class="form-grid"><div class="field"><label>Business name</label><input class="input" value="WAWO Brand House"/></div><div class="field"><label>Currency</label><input class="input" value="NGN — ₦" readonly/></div></div></div><div class="card panel"><h3>Data</h3><div class="sub">This first build stores demo records in the browser. Supabase can be connected in the next build.</div><button class="btn" onclick="if(confirm(\'Reset demo data?\')){state=structuredClone(seed);save();renderView();toast(\'Demo data reset\')}">Reset demo data</button></div></div>';
+}
+function openModal(title,html){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=html;document.getElementById('modalBackdrop').classList.add('show')}
+function closeModal(){document.getElementById('modalBackdrop').classList.remove('show')}
+function openAdd(type){
+ if(type==='inventory')openModal('Add inventory item','<div class="form-grid"><div class="field full"><label>Item name</label><input class="input" id="m-name"></div><div class="field"><label>SKU</label><input class="input" id="m-sku"></div><div class="field"><label>Category</label><input class="input" id="m-category" value="Packaging"></div><div class="field"><label>Unit</label><input class="input" id="m-unit" value="pcs"></div><div class="field"><label>Opening stock</label><input class="input" id="m-stock" type="number" value="0"></div><div class="field"><label>Reorder level</label><input class="input" id="m-reorder" type="number" value="10"></div><div class="field"><label>Unit cost</label><input class="input" id="m-cost" type="number" value="0"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveInventory()">Save item</button></div>');
+ else if(type==='clients')openModal('Add client','<div class="form-grid"><div class="field full"><label>Client / business name</label><input class="input" id="m-name"></div><div class="field"><label>Contact person</label><input class="input" id="m-contact"></div><div class="field"><label>Phone</label><input class="input" id="m-phone"></div><div class="field full"><label>Email</label><input class="input" id="m-email"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveClient()">Save client</button></div>');
+ else if(type==='expenses')openModal('Add expense','<div class="form-grid"><div class="field"><label>Date</label><input class="input" id="m-date" type="date" value="'+new Date().toISOString().slice(0,10)+'"></div><div class="field"><label>Category</label><input class="input" id="m-category" value="Miscellaneous"></div><div class="field"><label>Payee</label><input class="input" id="m-payee"></div><div class="field"><label>Amount</label><input class="input" id="m-amount" type="number"></div><div class="field full"><label>Reference</label><input class="input" id="m-ref"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveExpense()">Save expense</button></div>');
+ else if(type==='orders')openModal('New job','<div class="form-grid"><div class="field"><label>Client</label><select class="select" id="m-client">'+state.clients.map(c=>'<option>'+esc(c.name)+'</option>').join('')+'</select></div><div class="field"><label>Due date</label><input class="input" id="m-due" type="date"></div><div class="field"><label>Revenue</label><input class="input" id="m-revenue" type="number"></div><div class="field"><label>Production cost</label><input class="input" id="m-cost" type="number"></div><div class="field"><label>Amount paid</label><input class="input" id="m-paid" type="number" value="0"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveOrder()">Create job</button></div>');
+ else if(type==='quotes')openModal('New quote','<div class="form-grid"><div class="field"><label>Client</label><select class="select" id="m-client">'+state.clients.map(c=>'<option>'+esc(c.name)+'</option>').join('')+'</select></div><div class="field"><label>Valid until</label><input class="input" id="m-valid" type="date"></div><div class="field full"><label>Total quoted</label><input class="input" id="m-total" type="number"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveQuote()">Save quote</button></div>');
+ else if(type==='products')openModal('Add product','<div class="form-grid"><div class="field full"><label>Product</label><input class="input" id="m-name"></div><div class="field"><label>Category</label><input class="input" id="m-category" value="Packaging"></div><div class="field"><label>Unit</label><input class="input" id="m-unit" value="pcs"></div><div class="field"><label>Cost / unit</label><input class="input" id="m-cost" type="number"></div><div class="field"><label>Selling / unit</label><input class="input" id="m-sell" type="number"></div></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="saveProduct()">Save product</button></div>');
+}
+function nextId(arr){return arr.length?Math.max(...arr.map(x=>num(x.id)))+1:1}
+function saveInventory(){state.inventory.push({id:nextId(state.inventory),name:document.getElementById('m-name').value,sku:document.getElementById('m-sku').value||'MAT-'+Date.now(),category:document.getElementById('m-category').value,unit:document.getElementById('m-unit').value,stock:num(document.getElementById('m-stock').value),reorder:num(document.getElementById('m-reorder').value),cost:num(document.getElementById('m-cost').value)});save();closeModal();renderView();toast('Inventory item added')}
+function saveClient(){state.clients.push({id:nextId(state.clients),name:document.getElementById('m-name').value,contact:document.getElementById('m-contact').value,phone:document.getElementById('m-phone').value,email:document.getElementById('m-email').value,revenue:0,due:0});save();closeModal();renderView();toast('Client added')}
+function saveExpense(){state.expenses.push({id:nextId(state.expenses),date:document.getElementById('m-date').value,category:document.getElementById('m-category').value,payee:document.getElementById('m-payee').value,amount:num(document.getElementById('m-amount').value),ref:document.getElementById('m-ref').value});save();closeModal();renderView();toast('Expense recorded')}
+function saveOrder(){const date=new Date().toISOString().slice(0,10),id=nextId(state.orders);state.orders.unshift({id,job:'WB-'+date.slice(0,4)+'-'+String(88+id).padStart(4,'0'),client:document.getElementById('m-client').value,date,dueDate:document.getElementById('m-due').value||date,status:'Confirmed',revenue:num(document.getElementById('m-revenue').value),cost:num(document.getElementById('m-cost').value),paid:num(document.getElementById('m-paid').value)});save();closeModal();renderView();toast('Job created')}
+function saveQuote(){const id=nextId(state.quotes),date=new Date().toISOString().slice(0,10);state.quotes.unshift({id,quote:'QT-'+date.slice(0,4)+'-'+String(32+id).padStart(4,'0'),client:document.getElementById('m-client').value,date,valid:document.getElementById('m-valid').value||date,status:'Draft',total:num(document.getElementById('m-total').value)});save();closeModal();renderView();toast('Quote saved')}
+function saveProduct(){state.products.push({id:nextId(state.products),name:document.getElementById('m-name').value,category:document.getElementById('m-category').value,unit:document.getElementById('m-unit').value,cost:num(document.getElementById('m-cost').value),sell:num(document.getElementById('m-sell').value)});save();closeModal();renderView();toast('Product added')}
+function adjustStock(id){const i=state.inventory.find(x=>x.id===id);openModal('Adjust stock — '+esc(i.name),'<div class="field"><label>Adjustment (use negative to issue stock)</label><input class="input" id="m-adj" type="number" value="0"></div><div style="margin-top:18px;text-align:right"><button class="btn primary" onclick="applyAdjustment('+id+')">Update stock</button></div>')}
+function applyAdjustment(id){const x=state.inventory.find(i=>i.id===id);x.stock=Math.max(0,x.stock+num(document.getElementById('m-adj').value));save();closeModal();renderView();toast('Stock adjusted')}
+document.getElementById('quickAdd').onclick=()=>openAdd('orders');
+document.getElementById('mobileMenuBtn').onclick=()=>document.getElementById('app').classList.toggle('sidebar-hidden');
+document.getElementById('modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});
+function renderView(){({dashboard:renderDashboard,inventory:renderInventory,products:renderProducts,clients:renderClients,quotes:renderQuotes,orders:renderOrders,production:renderProduction,expenses:renderExpenses,calculator:renderCalculator,reports:renderReports,settings:renderSettings}[current]||renderDashboard)()}
+renderNav();renderView();
+</script>
+</body>
+</html>
