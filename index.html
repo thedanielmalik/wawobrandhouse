@@ -6,7 +6,7 @@
 <title>WAWO Brand House — Make Your Brand Look Ready.</title>
 <script src="config.js?v=20260922-juicer"></script>
 <meta name="description" content="Wawo Brand House creates custom packaging, nylon packages, branded merchandise, print production and corporate gifting for ambitious businesses.">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#101010">
 <meta property="og:title" content="WAWO Brand House — Make Your Brand Look Ready.">
 <meta property="og:description" content="Custom packaging, nylon packages, print, merchandise and corporate gifting.">
 <meta property="og:type" content="website">
@@ -60,12 +60,58 @@ footer{background:#0b0b0b;color:#fff;padding:44px 0}.footer-grid{display:grid;gr
 .library-close{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:8px 12px;cursor:pointer}
 @media(max-width:1120px){.library-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.library-results{width:100%}.library-filters{width:100%}}
+
+/* WAWO collection-inspired luxury art direction */
+:root{--red:#cc1424;--red2:#ed2637;--ink:#101010;--paper:#f7f4ee;--cream:#eee8de;--warm:#ded4c5;--muted:#756f67;--line:#d8d0c6;--serif:'Iowan Old Style',Georgia,'Times New Roman',serif}
+.header{background:rgba(15,15,15,.96);border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.logo{filter:brightness(0) invert(1)}
+.nav-links a:hover{color:#f04450}
+.btn{border-radius:2px;text-transform:uppercase;letter-spacing:.08em;font-size:10px;padding:14px 19px}
+.btn-red{background:var(--red);border-color:var(--red)}
+.btn-dark{background:#fff;border-color:#fff;color:#111}
+.hero{position:relative;overflow:hidden;background:#101010;color:#fff;border:0}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 52%,rgba(184,12,29,.26),transparent 47%),linear-gradient(110deg,#101010 0%,#151312 58%,#241013 100%);pointer-events:none}
+.hero:after{content:"";position:absolute;right:-16vw;top:0;width:46vw;height:100%;background:linear-gradient(135deg,transparent 39%,rgba(202,20,36,.24) 39%,rgba(202,20,36,.24) 43%,transparent 43%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;grid-template-columns:.94fr 1.06fr;gap:clamp(22px,4vw,70px);align-items:center;min-height:710px;padding-top:28px;padding-bottom:28px}
+.hero-copy{min-height:0;max-width:620px;margin:0;padding:70px 0;text-align:left;align-items:flex-start;position:relative;z-index:2}
+.hero .eyebrow{color:#ef5260;letter-spacing:.22em;font-size:10px}
+.hero h1{font-family:var(--serif);font-size:clamp(62px,7.2vw,106px);font-weight:500;letter-spacing:-.055em;line-height:.91;max-width:630px;margin:24px 0}
+.hero h1 span{display:block;color:#ee2638;font-style:italic;font-weight:400}
+.hero p{color:#d2cbc4;font-size:15px;max-width:500px;margin:0 0 28px}
+.hero-actions{justify-content:flex-start}
+.hero-actions .btn:not(.btn-red){border-color:rgba(255,255,255,.4);color:#fff;background:transparent}
+.hero-media{display:grid;position:relative;display:block;height:min(590px,58vw);min-height:440px;max-height:620px}
+.hero-image{position:absolute;overflow:hidden;background:#221f1c;border:1px solid rgba(255,255,255,.2);box-shadow:0 25px 65px rgba(0,0,0,.4)}
+.hero-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.hero-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.82)}
+.hero-image span{position:absolute;z-index:1;left:15px;bottom:13px;color:#fff;font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+.hero-image-main{left:23%;top:8%;width:62%;height:78%;transform:rotate(2deg)}
+.hero-image-top{left:2%;top:2%;width:36%;height:40%;transform:rotate(-5deg)}
+.hero-image-bottom{left:4%;bottom:4%;width:39%;height:41%;transform:rotate(-3deg)}
+.hero-stamp{position:absolute;right:2%;bottom:0;z-index:2;background:var(--red);color:#fff;width:102px;height:102px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:9px;line-height:1.4;letter-spacing:.14em;transform:rotate(9deg)}
+.section-head h2,.process-copy h2{font-family:var(--serif);font-weight:500;letter-spacing:-.035em}
+.category,.product-card{border-radius:4px;border-color:#d5cbbf}
+.category:hover{box-shadow:0 16px 35px rgba(35,22,15,.1)}
+.category img{filter:saturate(.88)}
+.product-card{border-radius:4px}
+.badge{border-radius:0;background:var(--ink);color:#fff}
+.portfolio-copy,.ig-copy,.campaign,.corp{border-radius:4px}
+.portfolio-copy h2,.ig-copy h2,.corp-copy h2,.campaign-copy h3{font-family:var(--serif);font-weight:400}
+.instagram{background:#eee8df}
+.campaign{border-radius:4px}
+.corp{border-radius:4px}
+.cta{background:#a8101d}
+footer{background:#101010}
+@media(max-width:1120px){.hero-grid{grid-template-columns:1fr 1fr;min-height:640px}.hero-copy{min-height:0;padding:60px 0}.hero-media{min-height:410px;height:49vw}}
+@media(max-width:680px){.header{background:rgba(15,15,15,.98)}.hero-grid{grid-template-columns:1fr;gap:0;min-height:0;padding-top:0;padding-bottom:42px}.hero-copy{min-height:0;padding:66px 0 32px}.hero h1{font-size:clamp(56px,15vw,82px);margin:20px 0}.hero p{font-size:14px}.hero-actions{width:100%}.hero-actions .btn{width:100%;max-width:300px}.hero-media{height:88vw;min-height:320px;max-height:460px;margin-top:6px}.hero-image-main{left:26%;top:7%;width:62%;height:78%}.hero-image-top{left:3%;top:1%;width:36%;height:40%}.hero-image-bottom{left:5%;bottom:3%;width:39%;height:40%}.hero-stamp{width:78px;height:78px;font-size:7px}.nav-actions .btn-red{font-size:9px;padding:12px}
+}
+
 </style>
 </head>
 <body>
 <header class="header"><div class="container nav"><a href="#top" aria-label="Wawo Brand House home"><img class="logo" src="logo.svg" alt="WAWO Brand House"></a><nav class="nav-links" aria-label="Primary"><a href="#products">Products</a><a href="#work">Our Work</a><a href="#instagram">Instagram</a><a href="#corporate">Corporate</a><a href="#seasonal">Seasonal</a></nav><div class="nav-actions"><a class="btn btn-dark" href="#products">Explore Products</a><button class="btn menu" id="menuBtn">Menu</button><button class="btn btn-red" id="quoteTop">Get a Quote →</button></div></div></header>
 <main id="top">
-<section class="hero"><div class="container hero-grid"><div class="hero-copy"><div class="eyebrow">Welcome To Wawo Brand House</div><h1>Make your brand <span>look ready.</span></h1><p>Professional printing, custom packaging, branding and personalized production solutions for businesses, organizations, institutions and individuals — including nylon printing, branded products, corporate gifts, merchandise, promotional products and general print production.</p><div class="hero-actions"><button class="btn btn-red" id="quoteHero">Build My Brand Pack →</button><a class="btn" href="#products">Explore Products</a></div></div></section>
+<section class="hero"><div class="container hero-grid"><div class="hero-copy"><div class="eyebrow">Welcome To Wawo Brand House</div><h1>Make your brand <span>look ready.</span></h1><p>Professional printing, custom packaging, branding and personalized production solutions for businesses, organizations, institutions and individuals — including nylon printing, branded products, corporate gifts, merchandise, promotional products and general print production.</p><div class="hero-actions"><button class="btn btn-red" id="quoteHero">Build My Brand Pack →</button><a class="btn" href="#products">Explore Products</a></div></div><div class="hero-media" aria-label="Selected WAWO branded products"><div class="hero-image hero-image-main"><img src="assets/wawo-work/corporate-new-02.jpg" alt="Premium branded corporate gift packaging"><span>THE SIGNATURE SET</span></div><div class="hero-image hero-image-top"><img src="assets/wawo-work/paper-box-05.jpg" alt="Custom branded paper packaging"><span>PACKAGING</span></div><div class="hero-image hero-image-bottom"><img src="assets/wawo-work/tote-01.jpg" alt="Branded tote bag"><span>MERCHANDISE</span></div><div class="hero-stamp">MADE TO<br>BE REMEMBERED</div></div></section>
 
 <section class="section" id="products"><div class="container"><div class="section-head"><div><div class="eyebrow">Explore Some of our products</div><h2>What would you like to brand?</h2></div><p>Start with the product. We'll help you choose the right material, finish and quantity for the job.</p></div><div class="categories">
 <a class="category" href="products.html#paper-bags-boxes"><img src="assets/wawo-work/paper-box-05.jpg?v=20260922" loading="lazy" alt="Custom paper bags and boxes"><div class="category-body"><strong>Paper Bags and Boxes</strong><small>Custom paper bags, cartons & boxes</small></div></a>
