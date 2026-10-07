@@ -207,7 +207,8 @@ function collectionItems(group){
 }
 function renderLibraryFilters(){
  libraryFilters.innerHTML='';
- [['All collections',null],...collectionGroups.map(g=>[g.name,g])].forEach(([label])=>{
+ const labels=['All collections',...collectionGroups.map(group=>group.name)];
+ labels.forEach(label=>{
   const button=document.createElement('button');button.type='button';button.className='library-filter'+(activeCollection===label?' active':'');button.textContent=label;
   button.addEventListener('click',()=>{activeCollection=label;activeSubcategory='All';visibleLimit=8;renderProductionLibrary();});
   libraryFilters.appendChild(button);
@@ -245,23 +246,6 @@ function renderProductionLibrary(){
  libraryLoadMore.textContent='View all '+items.length+' pieces';
 }
 libraryLoadMore.addEventListener('click',()=>{visibleLimit=productionLibrary.length;renderProductionLibrary();});
-renderProductionLibrary();});libraryFilters.appendChild(b);});
-function renderProductionLibrary(){
- const items=activeLibraryFilter==='All'?productionLibrary:productionLibrary.filter(x=>x[0]===activeLibraryFilter);
- libraryEl.innerHTML='';
- if(!items.length){libraryEl.innerHTML='<div class="library-empty">No production work is available in this category yet.</div>';}
- items.forEach((item,idx)=>{
-   const [category,filename,title]=item;
-   const card=document.createElement('button');card.type='button';card.className='library-card';card.title=title;card.setAttribute('aria-label','View '+title);
-   const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.src='assets/wawo-work/'+filename;img.alt=title;
-   img.onerror=()=>{card.remove();}
-   const meta=document.createElement('div');meta.className='library-meta';const b=document.createElement('b');b.textContent=title;const s=document.createElement('span');s.textContent=category;meta.append(b,s);card.append(img,meta);
-   card.addEventListener('click',()=>{lbImg.src='assets/wawo-work/'+filename;lbImg.alt=title;lbTitle.textContent=title;lbCategory.textContent=category;libraryModal.classList.add('open');});
-   libraryEl.appendChild(card);
- });
- 
-}
-function updateLibraryResults(){const visible=libraryEl.querySelectorAll('.library-card').length;libraryResults.textContent='Showing '+visible+' of '+productionLibrary.length;libraryCount.textContent=productionLibrary.length;}
 renderProductionLibrary();
 </script>
 <script>
