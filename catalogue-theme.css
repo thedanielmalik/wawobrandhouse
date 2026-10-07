@@ -19,7 +19,7 @@ footer{background:#060606;border-top:1px solid #222;padding:55px 0}.footer-links
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 
 /* Bring real WAWO production forward so visitors see client work immediately. */
-.production-archive.library-section{padding:62px 0 68px;background:#111;border-top:1px solid #303030;border-bottom:1px solid #303030;scroll-margin-top:76px}
+.production-archive.library-section{padding:40px 0 56px;background:#111;border-top:1px solid #303030;border-bottom:1px solid #303030;scroll-margin-top:76px}
 .production-intro{display:grid;grid-template-columns:1fr auto;align-items:end;gap:36px;margin:0 0 30px}
 .production-intro h2{font-size:clamp(38px,5vw,66px);font-weight:700;line-height:1;letter-spacing:-.035em;margin:10px 0 0;color:#fff}
 .production-intro>div:last-child{max-width:440px}
@@ -33,6 +33,8 @@ footer{background:#060606;border-top:1px solid #222;padding:55px 0}.footer-links
 .production-archive .library-meta b{font-size:14px;line-height:1.2}
 .production-archive .library-meta span{font-size:10px}
 .collections-section{border-top:1px solid #292929}
+@media(min-width:1121px){.catalogue-hero-grid{min-height:460px}.catalogue-hero-image{height:460px}.catalogue-hero-copy{padding:20px 0}.catalogue-hero h1{font-size:clamp(52px,5.2vw,76px)}.hero-foot{padding:14px 0}}
+@media(min-width:681px) and (max-width:1120px){.catalogue-hero-grid{min-height:500px}.catalogue-hero-image{height:500px}.catalogue-hero-copy{padding:24px 0}.catalogue-hero h1{font-size:clamp(50px,6vw,68px)}}
 @media(max-width:900px){.production-intro{grid-template-columns:1fr;gap:16px}.production-intro>div:last-child{max-width:620px}}
-@media(max-width:680px){.production-archive.library-section{padding:48px 0 52px}.production-intro h2{font-size:36px}.production-intro p:not(.eyebrow){font-size:15px}.production-archive .library-tools{gap:10px}.production-archive .library-filter{font-size:10px;padding:9px 10px}.production-archive .library-subfilter{font-size:10px}.production-archive .library-grid{gap:8px}.production-archive .library-meta{left:10px;right:10px;bottom:9px}.production-archive .library-meta b{font-size:12px}}
+@media(max-width:680px){.catalogue-hero-copy{padding:32px 0 20px}.edition{margin-bottom:16px}.red-rule{margin:20px 0 15px}.catalogue-hero p{margin-bottom:20px}.catalogue-hero-image{height:250px}.hero-foot{padding:14px 0}.production-archive.library-section{padding:34px 0 46px}.production-intro h2{font-size:36px}.production-intro p:not(.eyebrow){font-size:15px}.production-archive .library-tools{gap:10px}.production-archive .library-filter{font-size:10px;padding:9px 10px}.production-archive .library-subfilter{font-size:10px}.production-archive .library-grid{gap:8px}.production-archive .library-meta{left:10px;right:10px;bottom:9px}.production-archive .library-meta b{font-size:12px}}
 
