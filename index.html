@@ -106,6 +106,37 @@ footer{background:#101010}
 @media(max-width:680px){.header{background:rgba(15,15,15,.98)}.hero-grid{grid-template-columns:1fr;gap:0;min-height:0;padding-top:0;padding-bottom:42px}.hero-copy{min-height:0;padding:66px 0 32px}.hero h1{font-size:clamp(56px,15vw,82px);margin:20px 0}.hero p{font-size:14px}.hero-actions{width:100%}.hero-actions .btn{width:100%;max-width:300px}.hero-media{height:88vw;min-height:320px;max-height:460px;margin-top:6px}.hero-image-main{left:26%;top:7%;width:62%;height:78%}.hero-image-top{left:3%;top:1%;width:36%;height:40%}.hero-image-bottom{left:5%;bottom:3%;width:39%;height:40%}.hero-stamp{width:78px;height:78px;font-size:7px}.nav-actions .btn-red{font-size:9px;padding:12px}
 }
 
+
+/* Calm, gallery-first collection navigation */
+.library-section{background:#101010;color:#f7f4ee;scroll-margin-top:76px}
+.library-section .section-head{align-items:end;margin-bottom:24px}
+.library-section .section-head h2{font-size:clamp(42px,5.5vw,76px);margin-top:10px;color:#fff}
+.library-section .section-head p{color:#bdb6ae;max-width:410px}
+.library-section .eyebrow{color:#eb2939}
+.library-shell{display:block}
+.library-tools{display:grid;gap:12px;margin:0 0 20px}
+.library-filters,.library-subfilters{display:flex;gap:8px;flex-wrap:wrap}
+.library-filter,.library-subfilter{border:1px solid rgba(255,255,255,.23);background:transparent;color:#eee9e2;border-radius:2px;padding:11px 14px;font-size:10px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease}
+.library-filter:hover,.library-subfilter:hover{border-color:#e32435;color:#fff}
+.library-filter.active{background:#c91425;border-color:#c91425;color:#fff}
+.library-subfilter{padding:8px 11px;font-size:9px;color:#bdb6ae}
+.library-subfilter.active{background:#282321;border-color:#c91425;color:#fff}
+.library-results{font-size:10px;color:#a8a098;letter-spacing:.04em}
+.library-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.library-card{border-radius:2px;aspect-ratio:1/1;background:#24211f}
+.library-card img{filter:saturate(.88);transition:transform .35s ease,filter .35s ease}
+.library-card:hover img{transform:scale(1.035);filter:saturate(1)}
+.library-meta{left:14px;right:14px;bottom:13px}
+.library-meta b{font-size:12px}
+.library-meta span{color:#e4b7b8;font-size:8px}
+.library-empty{background:#171615;border-color:#49423b;color:#cfc8c0}
+.library-actions{display:flex;justify-content:center;margin:24px 0 0}
+.library-more{border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;padding:13px 20px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.library-more:hover{background:#c91425;border-color:#c91425}
+.library-section .disclaimer{color:#867f76;text-align:center;margin-top:20px}
+@media(max-width:900px){.library-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.library-section .section-head{display:block}.library-section .section-head p{margin-top:12px}.library-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.library-filter,.library-subfilter{padding:9px 10px;font-size:9px}.library-results{margin-top:1px}}
+
 </style>
 </head>
 <body>
@@ -113,30 +144,14 @@ footer{background:#101010}
 <main id="top">
 <section class="hero"><div class="container hero-grid"><div class="hero-copy"><div class="eyebrow">Welcome To Wawo Brand House</div><h1>Make your brand <span>look ready.</span></h1><p>Professional printing, custom packaging, branding and personalized production solutions for businesses, organizations, institutions and individuals — including nylon printing, branded products, corporate gifts, merchandise, promotional products and general print production.</p><div class="hero-actions"><button class="btn btn-red" id="quoteHero">Build My Brand Pack →</button><a class="btn" href="#products">Explore Products</a></div></div><div class="hero-media" aria-label="Selected WAWO branded products"><div class="hero-image hero-image-main"><img src="assets/wawo-work/corporate-new-02.jpg" alt="Premium branded corporate gift packaging"><span>THE SIGNATURE SET</span></div><div class="hero-image hero-image-top"><img src="assets/wawo-work/paper-box-05.jpg" alt="Custom branded paper packaging"><span>PACKAGING</span></div><div class="hero-image hero-image-bottom"><img src="assets/wawo-work/tote-01.jpg" alt="Branded tote bag"><span>MERCHANDISE</span></div><div class="hero-stamp">MADE TO<br>BE REMEMBERED</div></div></section>
 
-<section class="section" id="products"><div class="container"><div class="section-head"><div><div class="eyebrow">Explore Some of our products</div><h2>What would you like to brand?</h2></div><p>Start with the product. We'll help you choose the right material, finish and quantity for the job.</p></div><div class="categories">
-<a class="category" href="products.html#paper-bags-boxes"><img src="assets/wawo-work/paper-box-05.jpg?v=20260922" loading="lazy" alt="Custom paper bags and boxes"><div class="category-body"><strong>Paper Bags and Boxes</strong><small>Custom paper bags, cartons & boxes</small></div></a>
-<a class="category" href="products.html#nylon-bags"><img src="assets/wawo-work/nylon-new-01.webp" loading="lazy" alt="Branded nylon bags and packaging"><div class="category-body"><strong>Nylon Bags and More</strong><small>Branded nylon, poly bags & flexible packaging</small></div></a>
-<a class="category" href="products.html#tote-bags-pouches"><img src="assets/wawo-work/tote-04.jpg" loading="lazy" alt="Custom tote bags and pouches"><div class="category-body"><strong>Tote Bags and Pouches</strong><small>Branded totes, shopping bags & pouches</small></div></a>
-<a class="category" href="products.html#labels"><img src="assets/wawo-work/labels-v2-11.jpg" loading="lazy" alt="Labels and stickers"><div class="category-body"><strong>Labels & Stickers</strong><small>Seals, tags & product labels</small></div></a>
-<a class="category" href="products.html#apparel"><img src="https://www.promoplace.com/promo-solutioninc/files/marketing-top-copy.png" loading="lazy" alt="Apparel and merchandise" onerror="this.src='assets/wawo-work/apparel-01.jpg'"><div class="category-body"><strong>Apparel & Merch</strong><small>T-shirts, polos, caps & branded wear</small></div></a>
-<a class="category" href="products.html#corporate"><img src="assets/wawo-work/corporate-new-02.jpg" loading="lazy" alt="Corporate gifts and branded gift boxes"><div class="category-body"><strong>Corporate Gifts</strong><small>Staff, client & event gifting</small></div></a>
-<a class="category" href="products.html#cards-paper-prints"><img src="assets/wawo-work/cards-v2-01.jpg" loading="lazy" alt="Cards and paper print production"><div class="category-body"><strong>Cards and Paper Prints</strong><small>Business cards, cards, inserts & printed paper</small></div></a>
-</div></div></section>
-
-<section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Featured products</div><h2>Products people actually order.</h2></div><a class="text-link" href="products.html#paper-bags-boxes">Explore all products →</a></div><div class="featured">
-<article class="product-card"><div class="badge">Popular</div><div class="product-image"><img src="assets/wawo-work/paper-box-02.jpg?v=20260922" loading="lazy" alt="Beauty Steel premium presentation box"></div><div class="product-meta"><small>Packaging</small><h3>Premium rigid boxes</h3><p>For beauty, gifting, food and premium retail brands.</p><button class="btn btn-red product-quote" data-product="Premium rigid boxes">Request a quote →</button></div></article>
-<article class="product-card"><div class="badge">Nylon</div><div class="product-image"><img src="assets/wawo-work/nylon-new-03.webp" loading="lazy" alt="Custom branded nylon bags"></div><div class="product-meta"><small>Nylon</small><h3>Nylon Bags & More</h3><p>Printed carrier bags, retail nylon and flexible branded packaging.</p><button class="btn btn-red product-quote" data-product="Nylon Bags and More">Request a quote →</button></div></article>
-<article class="product-card"><div class="badge">Merch</div><div class="product-image"><img src="https://images.unsplash.com/photo-1636954935833-80bdb8d2fcb2?auto=format&fit=crop&fm=jpg&q=90&w=2400" loading="lazy" alt="Branded apparel product example"></div><div class="product-meta"><small>Merchandise</small><h3>Branded apparel</h3><p>T-shirts, polos, caps and workwear that carry the brand.</p><button class="btn btn-red product-quote" data-product="Branded apparel">Request a quote →</button></div></article>
-</div></div></section>
-
-<section class="section" id="work"><div class="container">
-<div class="section-head"><div><div class="eyebrow">Production library</div><h2>All the work.<br>In one place.</h2></div><p>Browse the real WAWO production work currently featured across our catalogue — packaging, nylon, bags, labels, apparel, corporate gifts and print.</p></div>
-<div class="portfolio-shell library-shell">
-<div class="library-tools"><div class="library-filters" id="libraryFilters" aria-label="Filter production library"></div></div>
+<section class="section library-section" id="work"><div class="container" id="products">
+<div class="section-head"><div><div class="eyebrow">WAWO collection</div><h2>Explore by category.</h2></div><p>Browse selected WAWO production. Choose a collection, then narrow it to the product you need.</p></div>
+<div class="library-shell">
+<div class="library-tools"><div class="library-filters" id="libraryFilters" aria-label="Filter production library"></div><div class="library-subfilters" id="librarySubfilters" aria-label="Filter by product type"></div><div class="library-results" id="libraryResults" aria-live="polite"></div></div>
 <div class="portfolio-grid library-grid" id="productionLibrary" aria-live="polite"></div>
-<div class="disclaimer">This library uses the actual WAWO work images currently supplied for the website catalogue. Generic campaign/reference visuals remain outside this production library.</div>
-</div>
-</div></section>
+<div class="library-actions"><button class="library-more" id="libraryLoadMore" type="button" hidden>View all</button></div>
+<div class="disclaimer">Every image is grouped under its original product type. A collection may include the same item in more than one view.</div>
+</div></div></section>
 
 <section class="section instagram" id="instagram"><div class="container"><div class="ig-shell"><div class="ig-copy"><div class="eyebrow">Live from @wawobrandhouse</div><h2>See what we're making lately.</h2><p>Fresh work, new packaging, branded merchandise and behind-the-scenes production — pulled directly from our Instagram feed.</p><button class="btn btn-dark" id="igSetup">Open Instagram ↗</button></div><div class="ig-feed"><div class="ig-feed-head"><span class="ig-feed-label">Instagram live feed</span><span class="ig-feed-status">Connected</span></div><div class="ig-live" id="igLive"><div class="juicer-feed" data-feed-id="wawobrandhouse"></div><script type="text/javascript" src="https://www.juicer.io/embed/wawobrandhouse/embed-code.js" async defer></script></div><div class="ig-fallback" id="igFallback"><div><b>Instagram feed unavailable</b><span>We couldn't load the live feed right now. You can still view the latest @wawobrandhouse posts on Instagram.</span><button class="btn btn-dark" id="igFallbackBtn">Open Instagram ↗</button></div></div></div></div></div></section>
 
@@ -166,16 +181,71 @@ footer{background:#101010}
 const productionLibrary=[["Paper Bags & Boxes","paper-box-01.jpg","Providus Bank branded paper bag"],["Paper Bags & Boxes","paper-box-02.jpg","Beauty Steel premium presentation box"],["Paper Bags & Boxes","paper-box-03.jpg","Gift Stash branded paper bag"],["Paper Bags & Boxes","paper-box-04.jpg","Glitz luxury jewellery box"],["Paper Bags & Boxes","paper-box-05.jpg","Luxury green branded paper bag"],["Paper Bags & Boxes","paper-box-06.jpg","Hair by Looks Journey branded paper bag"],["Paper Bags & Boxes","paper-box-07.jpg","Xendora branded presentation box"],["Nylon Bags & More","nylon-new-01.webp","Branded nylon shopping bag"],["Nylon Bags & More","nylon-new-02.webp","Branded retail bag"],["Nylon Bags & More","nylon-new-03.webp","Branded nylon pouch"],["Nylon Bags & More","nylon-new-04.webp","Printed nylon packaging"],["Nylon Bags & More","nylon-new-05.webp","Branded flexible packaging pouch"],["Nylon Bags & More","nylon-new-06.webp","Branded product pouch"],["Nylon Bags & More","nylon-new-07.webp","Branded shopping bag"],["Nylon Bags & More","nylon-new-08.webp","Printed nylon pouch"],["Nylon Bags & More","nylon-new-09.webp","Branded retail shopping bag"],["Nylon Bags & More","nylon-new-10.webp","Custom branded retail bag"],["Nylon Bags & More","nylon-new-11.webp","Branded shopping bag"],["Nylon Bags & More","nylon-new-12.webp","Branded printed pouch"],["Nylon Bags & More","nylon-new-13.webp","Custom printed nylon pouch"],["Tote Bags & Pouches","tote-01.jpg","FCMB branded tote bag"],["Tote Bags & Pouches","tote-02.jpg","Christmas promotional tote bag"],["Tote Bags & Pouches","tote-03.jpg","Yellow branded promotional tote bag"],["Tote Bags & Pouches","tote-04.jpg","Boss Lady pink tote bag"],["Tote Bags & Pouches","tote-05.jpg","Yety branded food pouches"],["Tote Bags & Pouches","tote-06.jpg","Branded cosmetic pouch"],["Tote Bags & Pouches","tote-07.jpg","Lade Foods branded food pouches"],["Labels & Stickers","labels-v2-01.jpg","RUBIAN GIRL woven brand labels"],["Labels & Stickers","labels-v2-02.jpg","Cosmopolitan garment labels"],["Labels & Stickers","labels-v2-03.jpg","Styled By Khome branded delivery card"],["Labels & Stickers","labels-v2-04.jpg","Custom printed product labels"],["Labels & Stickers","labels-v2-05.jpg","Branded thank-you labels and cards"],["Labels & Stickers","labels-v2-06.jpg","Wawo Hub circular and oval labels"],["Labels & Stickers","labels-v2-07.jpg","Lade Bakes & Drinks branded delivery card"],["Labels & Stickers","labels-v2-08.jpg","Branded bakery product sticker"],["Labels & Stickers","labels-v2-09.jpg","Aura Luxe branded delivery card"],["Labels & Stickers","labels-v2-10.jpg","Branded circular food product label"],["Labels & Stickers","labels-v2-11.jpg","Gift Stash printed label sheet"],["Labels & Stickers","labels-v2-12.jpg","Lade Bakes & Drinks Milky Yoghurt product label"],["Labels & Stickers","labels-v2-13.jpg","Lade Bakes & Drinks branded delivery card"],["Labels & Stickers","labels-v2-14.jpg","Lade Bakes & Drinks Tigernut Milk product label"],["Apparel & Merch","apparel-01.jpg","Black graphic T-shirt"],["Apparel & Merch","apparel-02.jpg","Pink branded T-shirt"],["Apparel & Merch","apparel-03.jpg","Green branded T-shirt"],["Apparel & Merch","apparel-04.jpg","Yellow illustrated T-shirt"],["Apparel & Merch","apparel-05.jpg","Michtolam branded T-shirt"],["Corporate Gifts","corporate-new-01.jpg","FCMB branded corporate umbrella"],["Corporate Gifts","corporate-new-02.jpg","Yetty Bakes premium branded gift box"],["Corporate Gifts","corporate-new-03.jpg","Duroclean branded corporate gift set"],["Corporate Gifts","corporate-new-04.jpg","Unusual Me branded executive pen set"],["Corporate Gifts","corporate-new-05.jpg","Defit branded tech and lifestyle gift set"],["Corporate Gifts","corporate-new-06.jpg","Rubian Girl branded stationery gift set"],["Cards & Print","cards-v2-01.jpg","SmartBiz Consult branded business cards"],["Cards & Print","cards-v2-02.jpg","Okebliss Kiddies promotional cards"],["Cards & Print","cards-v2-03.jpg","Ayanfe Handmade business cards"],["Cards & Print","cards-v2-04.jpg","Wawo Hub promotional cards"],["Cards & Print","cards-v2-05.jpg","4-Fold instruction card"],["Cards & Print","cards-v2-06.jpg","Cimbay Mode care and sizing card"],["Cards & Print","cards-v2-07.jpg","TTA Atelier thank-you card"],["Cards & Print","cards-v2-08.jpg","TTA Atelier branded hang tags"],["Cards & Print","cards-v2-09.jpg","Birthday promotional print cards"],["Cards & Print","cards-v2-10.jpg","Eniluxe fashion business cards"],["Cards & Print","cards-v2-11.jpg","Chinaza Ibe branded notebook print"],["Cards & Print","cards-v2-12.jpg","Eden fashion product cards"],["Cards & Print","cards-v2-13.jpg","Wawo Hub Kessy hang tag and card"],["Cards & Print","cards-v2-14.jpg","SmartBiz Consult business cards — alternate supplied view"]];
 const libraryEl=document.getElementById('productionLibrary');
 const libraryFilters=document.getElementById('libraryFilters');
+const librarySubfilters=document.getElementById('librarySubfilters');
+const libraryResults=document.getElementById('libraryResults');
+const libraryLoadMore=document.getElementById('libraryLoadMore');
 const libraryModal=document.createElement('div');
 libraryModal.className='library-lightbox';
 libraryModal.innerHTML='<div class="library-lightbox-box"><img alt=""><div class="library-lightbox-caption"><div><b></b><span></span></div><button class="library-close" type="button">Close</button></div></div>';
 document.body.appendChild(libraryModal);
 const lbImg=libraryModal.querySelector('img'),lbTitle=libraryModal.querySelector('b'),lbCategory=libraryModal.querySelector('span');
-libraryModal.addEventListener('click',e=>{if(e.target===libraryModal||e.target.classList.contains('library-close')){libraryModal.classList.remove('open');}});
+libraryModal.addEventListener('click',e=>{if(e.target===libraryModal||e.target.classList.contains('library-close'))libraryModal.classList.remove('open');});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')libraryModal.classList.remove('open');});
-const libraryCategories=['All',...new Set(productionLibrary.map(x=>x[0]))];
-let activeLibraryFilter='All';
-libraryCategories.forEach(cat=>{const b=document.createElement('button');b.type='button';b.className='library-filter'+(cat==='All'?' active':'');b.textContent=cat;b.dataset.category=cat;b.addEventListener('click',()=>{activeLibraryFilter=cat;libraryFilters.querySelectorAll('.library-filter').forEach(x=>x.classList.toggle('active',x===b));renderProductionLibrary();});libraryFilters.appendChild(b);});
+const collectionGroups=[
+ {name:'Packaging & Bags',cats:['Paper Bags & Boxes','Nylon Bags & More','Tote Bags & Pouches']},
+ {name:'Stationery & Print',cats:['Labels & Stickers','Cards & Print']},
+ {name:'Apparel & Merch',cats:['Apparel & Merch']},
+ {name:'Corporate Gifts',cats:['Corporate Gifts']},
+ {name:'Campaigns & Events',files:['tote-02.jpg','tote-03.jpg','cards-v2-02.jpg','cards-v2-09.jpg']}
+];
+const sampleFiles=['paper-box-02.jpg','nylon-new-01.webp','tote-01.jpg','cards-v2-01.jpg','apparel-01.jpg','corporate-new-02.jpg','cards-v2-02.jpg','tote-02.jpg'];
+let activeCollection='All collections',activeSubcategory='All',visibleLimit=8;
+function collectionItems(group){
+ if(!group)return productionLibrary;
+ if(group.files)return productionLibrary.filter(item=>group.files.includes(item[1]));
+ return productionLibrary.filter(item=>group.cats.includes(item[0]));
+}
+function renderLibraryFilters(){
+ libraryFilters.innerHTML='';
+ [['All collections',null],...collectionGroups.map(g=>[g.name,g])].forEach(([label])=>{
+  const button=document.createElement('button');button.type='button';button.className='library-filter'+(activeCollection===label?' active':'');button.textContent=label;
+  button.addEventListener('click',()=>{activeCollection=label;activeSubcategory='All';visibleLimit=8;renderProductionLibrary();});
+  libraryFilters.appendChild(button);
+ });
+}
+function renderSubfilters(group){
+ librarySubfilters.innerHTML='';
+ if(!group)return;
+ const labels=group.files?['Promotional pieces']:['All products',...group.cats];
+ labels.forEach(label=>{
+  const value=label==='All products'||label==='Promotional pieces'?'All':label;
+  const button=document.createElement('button');button.type='button';button.className='library-subfilter'+(activeSubcategory===value?' active':'');button.textContent=label;
+  button.addEventListener('click',()=>{activeSubcategory=value;visibleLimit=8;renderProductionLibrary();});
+  librarySubfilters.appendChild(button);
+ });
+}
+function renderProductionLibrary(){
+ const group=collectionGroups.find(item=>item.name===activeCollection);
+ let items=collectionItems(group);
+ if(group&&!group.files&&activeSubcategory!=='All')items=items.filter(item=>item[0]===activeSubcategory);
+ if(activeCollection==='All collections')items=[...sampleFiles.map(file=>productionLibrary.find(item=>item[1]===file)).filter(Boolean),...productionLibrary.filter(item=>!sampleFiles.includes(item[1]))];
+ const shown=items.slice(0,visibleLimit);
+ libraryEl.innerHTML='';
+ shown.forEach(item=>{
+  const [category,filename,title]=item;
+  const card=document.createElement('button');card.type='button';card.className='library-card';card.title=title;card.setAttribute('aria-label','View '+title);
+  const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.src='assets/wawo-work/'+filename;img.alt=title;img.onerror=()=>card.remove();
+  const meta=document.createElement('div');meta.className='library-meta';const b=document.createElement('b');b.textContent=title;const label=document.createElement('span');label.textContent=category;meta.append(b,label);card.append(img,meta);
+  card.addEventListener('click',()=>{lbImg.src='assets/wawo-work/'+filename;lbImg.alt=title;lbTitle.textContent=title;lbCategory.textContent=category;libraryModal.classList.add('open');});
+  libraryEl.appendChild(card);
+ });
+ renderLibraryFilters();renderSubfilters(group);
+ libraryResults.textContent=activeCollection==='All collections'?'Showing '+shown.length+' of '+items.length+' pieces':activeCollection+' · '+shown.length+' of '+items.length+' pieces';
+ libraryLoadMore.hidden=items.length<=visibleLimit;
+ libraryLoadMore.textContent='View all '+items.length+' pieces';
+}
+libraryLoadMore.addEventListener('click',()=>{visibleLimit=productionLibrary.length;renderProductionLibrary();});
+renderProductionLibrary();});libraryFilters.appendChild(b);});
 function renderProductionLibrary(){
  const items=activeLibraryFilter==='All'?productionLibrary:productionLibrary.filter(x=>x[0]===activeLibraryFilter);
  libraryEl.innerHTML='';
